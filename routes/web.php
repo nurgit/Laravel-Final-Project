@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/login', 'LoginController@index');
+Route::post('/login', ['uses'=>'LoginController@validation']);
+Route::get('/signup', 'SignupController@index');
+Route::post('/signup', ['uses'=>'Signup@validation']);

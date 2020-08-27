@@ -1,27 +1,32 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>login</title>
-</head>
-<body>
-	
-	<h1>login</h1>
-	
-	<form method="post">
-		<table>
-			<tr>
-				<td>Username</td>
-				<td><input type="text" name="username"></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" name="submit" value="Submit"></td>
-			</tr>
-		</table>
-	</form>
-</body>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Login Page</title>
+	<link rel="stylesheet" href="assets/css/login.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@469&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="signin">
+			<form method="post" >
+				<h2 style="color:white">Log In</h2>
+				<input type="text" name="username"
+				placeholder="Username">
+				<input type="password" name="password"
+				placeholder="Password"><br><br>
+				<a href=""><input type="submit" name="submit" value="Log In"></a><br><br>
+
+
+				<div id="container">
+				<a href="#" styles="margin-right:0px; font-size:13px font-family:'Roboto Condensed',Geneva,sans-serif;">Reset password</a><br><br>
+				<a href="#" styles="margin-right:0px; font-size:13px font-family:'Roboto Condensed',Tahoma,Geneva,sans-serif;">Forgot password</a>
+
+				</div><br><br><br><br>
+				<a href="/">&nbsp;Home</a><br><br>
+
+				Dont have a account?<a href="/signup">&nbsp;Sign Up</a>
+
+			</form>
+		</div>
+	</body>
 </html>

@@ -36,7 +36,7 @@
      				CLICK HERE TO SIGN UP
 
      			</P>
-     			<a href="/user/signup" id="vidBtn">SIGN UP</a>
+     			<a href="/signup" id="vidBtn">SIGN UP</a>
      		</div>
 			</div>
      	<ul class="social-icons list-inline">
@@ -89,7 +89,7 @@
               <li><a href="">tutor</a></li>
               <li><a href="">contact</a></li>
               <li><a href="/login">Login</a></li>
-              <li><a href="/user/signup">Signup</a></li>
+              <li><a href="/signup">Signup</a></li>
 
 
 

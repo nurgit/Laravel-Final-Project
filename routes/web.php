@@ -17,6 +17,17 @@ Route::get('/', function () {
 
 
 Route::get('/login', 'LoginController@index');
-Route::post('/login', ['uses'=>'LoginController@validation']);
+Route::post('/login', ['uses'=>'LoginController@verify']);
+Route::get('/logout', ['uses'=>'logoutController@index']);
+
 Route::get('/signup', 'SignupController@index');
 Route::post('/signup', ['uses'=>'Signup@validation']);
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/tutor', 'TutorController@index');
+Route::get('/student', 'StudentController@index');
+
+
+
+
+//Route::get('/home', 'LoginController@validation');

@@ -22,12 +22,13 @@ Route::get('/logout', ['uses'=>'logoutController@index']);
 
 Route::get('/signup', 'SignupController@index');
 Route::post('/signup', ['uses'=>'Signup@validation']);
+Route::middleware(['sess'])->group(function()
+{
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
+    Route::get('/student', 'StudentController@index');
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/tutor', 'TutorController@index');
-Route::get('/student', 'StudentController@index');
-
-
+});
 
 
 //Route::get('/home', 'LoginController@validation');

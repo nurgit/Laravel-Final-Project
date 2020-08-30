@@ -17,6 +17,18 @@
 				<a href=""><input type="submit" name="submit" value="Log In"></a><br><br>
 
 
+				<!--invalid username/password-->
+
+				<h3 style="color:red;">
+
+					@if (Session::has('msg'))
+					{{{ Session::get('msg') }}}
+					@endif
+				</h3>
+
+
+
+
 				<div id="container">
 				<a href="#" styles="margin-right:0px; font-size:13px font-family:'Roboto Condensed',Geneva,sans-serif;">Reset password</a><br><br>
 				<a href="#" styles="margin-right:0px; font-size:13px font-family:'Roboto Condensed',Tahoma,Geneva,sans-serif;">Forgot password</a>

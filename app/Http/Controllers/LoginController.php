@@ -13,6 +13,7 @@ class LoginController extends Controller
     	return view('login.index');
     }
 
+
     function verify(Request $request){
 
 
@@ -22,10 +23,10 @@ class LoginController extends Controller
            // $request->session()->foget('username');
            //  $request->session()->flush();
            //
-            $request->session()->flash('msg', 'invalid user');
-            $request->session()->flash('error', 'db error');
-            $request->session()->get('msg');
-            $request->session()->keep('msg');
+            // $request->session()->flash('msg', 'invalid user');
+            // $request->session()->flash('error', 'db error');
+            // $request->session()->get('msg');
+            // $request->session()->keep('msg');
            //  $request->session()->reflash();
            //  $request->session()->has('username');
            //  $request->session()->pull('username');

@@ -56,8 +56,8 @@
          <nav class="nav2">
              <ul>
 <!-- // Tutor home page -->
-               <li><a href="/tutor/profile"><span>01.</span>My profile </a></li>
-               <li><a href="/tutor/update/<%= username %>"><span>02.</span>Update profile </a></li>
+               <li><a href="/tutor/profile/{{{ Session::get('username') }}}"><span>01.</span>My profile </a></li>
+               <li><a href="/tutor/update/{{{ Session::get('username') }}}"><span>02.</span>Update profile </a></li>
                <li><a href="/tutor/view_students"><span>03.</span>My students</a></li>
 
                <li><a href="/tutor/create/"><span>04.</span>Join as a paid tutor</a></li>

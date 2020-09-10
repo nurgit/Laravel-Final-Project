@@ -40,14 +40,17 @@
 
                        </h2>
                        </div>
-                         <hr>
-                       <ul class="container details">
-                          <li><p><span class="" style="width:50px;"></span><b>User Name:</b><%= user.username%></p></li>
-                         <li><p><b>Id      :</b> <span class="" style="width:50px;"></span><%= user.id%></p></li>
-                         <li><p><span class="" style="width:50px;"><b>Email  :</b></span><%= user.email %></p></li>
-                         <li><p><span class="" style="width:50px;"><b>User Type:</b></span><%= user.type%></p></li>
+                       </br>
 
+                       <ul class="container details">
+                         @foreach ($user as $user)
+                          <li><p><span class="" style="width:50px;"></span><b> User Name: </b> {{$user->username}}</p></li>
+                         <li><p><b>Id      :</b> <span class="" style="width:50px;"></span>{{$user->id}}</p></li>
+                         <li><p><span class="" style="width:50px;"><b>Email  :</b></span>{{$user->email}}</p></li>
+                         <li><p><span class="" style="width:50px;"><b>User Type:</b></span>{{$user->type}}</p></li>
+                         @endforeach
                        </ul>
+
                    </div>
                </div>
              </div>

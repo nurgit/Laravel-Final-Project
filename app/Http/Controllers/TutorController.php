@@ -18,15 +18,46 @@ class TutorController extends Controller
 
 
 //FOR TUTOR PROFILE---------------------------------------------------
-  function profile(){
+  function profile($username){
 
     $user = new User();
-    //data = $user->all();
-  //  print_r($data);
-    // $data = $user->where('username',$request->session()->get('username'))
-    //                 ->get();
-    return view('tutor.profile');
+    $data = $user->where('username', $username)
+    ->get();
+    //$user=user::find($username);
+  // print_r($data);
+
+  return view('tutor.profile')->with('user', $data);
   }
+
+
+  //FOR TUTOR UPDATE---------------------------------------------------
+ public function updateView($username){
+
+   $user = new User();
+   $data = $user->where('username', $username)
+   ->get();
+    return view('tutor.update')->with('user', $data);
+  }
+
+
+  function update($username, Request $request){
+    $user = new User();
+    $user = $user->where('username', $username)
+     ->get();
+     print_r($user);
+
+      //$user = User::where($username);
+        // $user->id           = $request->id;
+        // $user->username     = $request->username;
+        // $user->password     = $request->password;
+        // $user->email        = $request->email;
+        // $user->type         = $request->trye;
+        // $user->save();
+
+    	// return redirect('tutor.index');
+
+    }
+
 
 
 //FOR TUTOR CONTACT---------------------------------------------------

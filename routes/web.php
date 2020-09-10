@@ -32,8 +32,10 @@ Route::middleware(['sess'])->group(function()
 
     //for tutor
     Route::get('/tutor', 'TutorController@index');//->middleware('sess');
-    Route::get('/tutor/profile', 'TutorController@profile');
-    Route::get('/tutor/contact', 'TutorController@contact');
+    Route::get('/tutor/profile/{username}', 'TutorController@profile');
+    Route::get('/tutor/contact', 'TutorController@contact')->name('tutor.contact');//Using name routing ***
+    Route::get('/tutor/update/{username}', 'TutorController@updateView');
+    Route::post('/tutor/update/{username}', 'TutorController@update');
 });
 
 

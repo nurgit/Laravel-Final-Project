@@ -25,8 +25,24 @@ Route::post('/signup', ['uses'=>'Signup@validation']);
 Route::middleware(['sess'])->group(function()
 {
     Route::get('/admin', 'AdminController@index');
+    Route::get('/viewuser', 'AdminController@view_users');
+
+
+
+
+   // ********************************************tutor routes *****************************************************
     Route::get('/tutor', 'TutorController@index');//->middleware('sess');
+
+
+
+   // ******************************************student Routes ******************************************************
+   
+
     Route::get('/student', 'StudentController@index');
+    
+  
+
+
 
 });
 

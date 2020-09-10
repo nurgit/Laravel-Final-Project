@@ -13,12 +13,12 @@ class AdminController extends Controller
     }
      function view_users(){
 
-      return view('admin.index');
+      return view('viewuser.index');
     }
 
       function createuser(){
 
-      return view('admin.index');
+      return view('createuser.index');
     }
 
     function storeuser(Request $request){
@@ -31,18 +31,18 @@ class AdminController extends Controller
   
           function tutor(){
 
-      return view('admin.index');
+      return view('tutor.index');
     }
 
 
           function student(){
 
-      return view('admin.index');
+      return view('student.index');
     }
 
       function payment(){
 
-      return view('admin.index');
+      return view('payment.index');
     }
 
 }

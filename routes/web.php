@@ -27,6 +27,7 @@ Route::middleware(['sess'])->group(function()
     Route::get('/admin', 'AdminController@index');
     Route::get('/tutor', 'TutorController@index');//->middleware('sess');
     Route::get('/student', 'StudentController@index');
+    Route::get('/student/profile','StudentController@profile');
 
 });
 

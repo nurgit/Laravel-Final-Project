@@ -56,11 +56,9 @@ class LoginController extends Controller
                    return redirect('/tutor');
              }
              elseif($data[0]['type']=='student'){
-                // $request->session()->put('type', "tutor");
+                
                  $request->session()->put('username', $request->username);
-                // $request->session()->put('username', $request->password);
-              // $request->session()->put('type'== "student");
-                // print_r(session()->all());
+                
 
                   return redirect('/student');
 

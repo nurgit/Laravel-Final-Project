@@ -115,20 +115,20 @@ html{
     visibility: hidden; */
 
 
-    transform: translateY(-100px);
+    transform: translateY(0);
     transition: all .4s ease-in-out;
     
     
 }
 
 
-.full-nav.open{
+/* .full-nav.open{
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     transition: all .4s ease-in-out;
     z-index: 99;
-}
+} */
 
 
 .full-nav .logo{

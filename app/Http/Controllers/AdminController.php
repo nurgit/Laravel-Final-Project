@@ -13,12 +13,12 @@ class AdminController extends Controller
     }
      function view_users(){
 
-      return view('viewuser.index');
+      return view('admin.viewuser');
     }
 
-      function createuser(){
+      function adminureg(){
 
-      return view('createuser.index');
+      return view('admin.createuser');
     }
 
     function storeuser(Request $request){
@@ -29,20 +29,20 @@ class AdminController extends Controller
     }
     
   
-          function tutor(){
+          function admintutor(){
 
-      return view('tutor.index');
+      return view('admin.tutor');
     }
 
 
-          function student(){
+          function adminstudent(){
 
-      return view('student.index');
+      return view('admin.student');
     }
 
       function payment(){
 
-      return view('payment.index');
+      return view('student.index');
     }
 
 }

@@ -61,7 +61,7 @@
 
    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.js"></script>
-   <script src="assets/js/main.js"></script>
+   <script src="{{ URL::asset('js/main.js') }}"></script>
 
 </body>
 

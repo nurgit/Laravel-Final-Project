@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Http\Requests\UserRequests;
+// use Illuminate\Support\Facades\DB;
 
 class TutorController extends Controller
 {
@@ -18,10 +19,10 @@ class TutorController extends Controller
 
 
 //FOR TUTOR PROFILE---------------------------------------------------
-  function profile($username){
+  function profile($id){
 
     $user = new User();
-    $data = $user->where('username', $username)
+    $data = $user->where('id', $id)
     ->get();
     //$user=user::find($username);
   // print_r($data);
@@ -31,30 +32,31 @@ class TutorController extends Controller
 
 
   //FOR TUTOR UPDATE---------------------------------------------------
- public function updateView($username){
+ public function updateView($id){
 
    $user = new User();
-   $data = $user->where('username', $username)
+   $data = $user->where('id', $id)
    ->get();
     return view('tutor.update')->with('user', $data);
   }
 
 
-  function update($username, Request $request){
-    $user = new User();
-    $user = $user->where('username', $username)
-     ->get();
-     print_r($user);
+  function update( Request $request, $id){
+    // $user = new User();
+    // $user = $user->where('id', $username)
+    //  ->get();
+    print_r($id);
 
-      //$user = User::where($username);
-        // $user->id           = $request->id;
-        // $user->username     = $request->username;
-        // $user->password     = $request->password;
-        // $user->email        = $request->email;
-        // $user->type         = $request->trye;
-        // $user->save();
+      // $user = User::where($username);
+      $user = User::find($id);
+      
+        $user->username     = $request->username;
+        $user->password     = $request->password;
+        $user->email        = $request->email;
+        $user->type         = $request->type;
+        $user->save();
 
-    	// return redirect('tutor.index');
+    	return redirect('tutor');
 
     }
 

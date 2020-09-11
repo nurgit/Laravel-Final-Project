@@ -21,7 +21,7 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 Route::get('/logout', ['uses'=>'logoutController@index']);
 
 Route::get('/signup', 'SignupController@index');
-Route::post('/signup', ['uses'=>'Signup@validation']);
+Route::post('/signup', ['uses'=>'SignupController@store']);
 Route::middleware(['sess'])->group(function()
 {
     Route::get('/admin', 'AdminController@index');
@@ -34,8 +34,8 @@ Route::middleware(['sess'])->group(function()
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
    Route::get('/tutor/profile/{username}', 'TutorController@profile');
    Route::get('/tutor/contact', 'TutorController@contact')->name('tutor.contact');//Using name routing ***
-   Route::get('/tutor/update/{username}', 'TutorController@updateView');
-   Route::post('/tutor/update/{username}', 'TutorController@update');
+   Route::get('/tutor/update/{id}', 'TutorController@updateView');
+   Route::post('/tutor/update/{id}', 'TutorController@update');
 
 
    // ******************************************student Routes ******************************************************

@@ -1,9 +1,30 @@
 <html>
 
 	<head>
+	<style>
+		.custom-select{
+			padding:9px 50px;
+			background-color:#5E6975;
+			color:white;
+			font-size:18;
+
+
+		}
+		.signup {
+    background: rgba(44,62,80,0.7);
+    /* padding: 40px; */
+    width: 280px;
+    height: 550px;
+    /* margin: auto;
+    margin-top: 80px;
+    margin-left: 50px; */
+    margin: 0 auto;
+}
+	</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Untitled Document</title>
 	<link rel="stylesheet"  href="assets/css/signup.css" type="text/css"  />
+	
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@469&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -44,21 +65,38 @@
 		<h1 style="text-align:center; color: black;"  >User Registration Form</h1><br>
 
 		
-		<div class="signup">
-
-			<form method="post">
+		<div class="signup" style="height:550px; width:320px;">
+				<form method="post">
 				<h2 style="color:#fff;">Sign Up</h2>
 
 				<input type="text" name="username"
 				placeholder="User Name"><br><br>
+				{!! $errors->first('username', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
 				<input type="password" name="password"
 				placeholder="Password"><br><br>
+				{!! $errors->first('password', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
 
 				<input type="text" name="email"
 				placeholder="Email address"><br><br>
-				<input type="text" name="type"
-				placeholder="User Type"><br><br>
+				{!! $errors->first('email', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
+				<!-- <input type="text" name="type"
+				placeholder="User Type"><br><br> -->
+				
+  <!-- <select name=type class="custom-select"  >
+   
+    <option value="student">Student</option>
+    <option value="tutor">tutor</option>
+	{!! $errors->first('type', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
+  </select> -->
+  <input list="type" placeholder="User Type" name="type">
+  <datalist id="type">
+    <option value="student">
+    <option value="tutor">
+    
+  </datalist>
 
+				{!! $errors->first('type', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
+				<br><br>
 				<input type="submit" name="submit" value="Sign up" ><br><br>
 
 				<!--
@@ -73,7 +111,6 @@
 				Already have an account? <a href="/login" style ="text-decoration: none; font-family: 'Play',sans-serif;color:yellow;">&nbsp;Log In</a>
 			</form>
 			<a href="/">Back to home</a>
-
 
 		</div>
 

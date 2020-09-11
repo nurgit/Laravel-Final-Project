@@ -40,7 +40,7 @@ class LoginController extends Controller
                         ->where('password', $request->password)
                         ->get();
 
-        //echo $data[0]->type;
+        // echo $data[0]->id;
 
     	if(count($data) > 0 )
       {
@@ -52,9 +52,11 @@ class LoginController extends Controller
                 return redirect('/admin');
             }
             elseif($data[0]['type']=='tutor'){
-                //   $request->session()->put('type', "tutor");
+                //  $request->session()->put('type', "tutor");
                 $request->session()->put('username', $request->username);
+                $request->session()->put('id',$data[0]->id);
                    return redirect('/tutor');
+                  // echo $data[0]->id;
              }
              elseif($data[0]['type']=='student'){
                 

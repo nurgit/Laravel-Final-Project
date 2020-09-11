@@ -8,13 +8,14 @@ body
 .signup
 {
 	background: rgba(44,62,80,0.7);
-	padding:40px;
+	
+	/* padding:200px; */
 	width: 280px;
-	height:450px;
+	height:600px;
 	margin: auto;
-	margin-top: 80px;
-	margin-left: 50px;
-	margin: 0 auto;
+	/* margin-top: 80px;
+	margin-left: 50px; */
+	/* margin: 0 auto; */
 }
 
 form{

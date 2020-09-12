@@ -33,9 +33,28 @@ class AdminController extends Controller
       return view('admin.edituser')->with('user', $user);
     }
 
-      function deleteuser(){
+      function deleteuser($id){
 
-      return view('admin.deleteuser');
+
+         $user = User::find($id);
+       
+
+      return view('admin.deleteuser')->with('user', $user);
+
+      
+    }
+
+     function removeuser($id, Request $request){
+        
+        //$users = $this->getStudentList();
+        //find student by id & delete
+        //updated list
+
+        if(User::destroy($id)){
+            return redirect()->action('AdminController@view_users');
+        }else{
+            return redirect()->route('admin.deleteuser', $id);
+        }
     }
 
 

@@ -25,7 +25,15 @@ Route::post('/signup', ['uses'=>'SignupController@store']);
 Route::middleware(['sess'])->group(function()
 {
     Route::get('/admin', 'AdminController@index');
+    Route::get('/adminureg', 'AdminController@adminureg');
     Route::get('/viewuser', 'AdminController@view_users');
+    Route::get('Admin/adminstudent', 'AdminController@adminstudent');
+    Route::get('Admin/admintutor', 'AdminController@admintutor');
+    Route::get('Admin/edituser/{id}', 'AdminController@edituser');
+    Route::post('Admin/edituser/{id}', 'AdminController@updateduser');
+    Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
+    Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
+
 
 
 

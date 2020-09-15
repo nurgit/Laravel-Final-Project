@@ -22,7 +22,7 @@
 }
 	</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Untitled Document</title>
+	<title>User Signup</title>
 	<link rel="stylesheet"  href="assets/css/signup.css" type="text/css"  />
 	
 

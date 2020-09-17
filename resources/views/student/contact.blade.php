@@ -59,7 +59,7 @@
   <div class="container contact">
 <div class="row">
   <div class="col-md-3">
-    <a href="/tutor">Back</a>|
+    <a href="/student">Back</a>|
     <a href="/logout">Logout</a>
     <div class="contact-info">
       <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>

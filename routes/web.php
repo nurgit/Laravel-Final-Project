@@ -50,6 +50,7 @@ Route::middleware(['sess'])->group(function()
 
 
     Route::get('/student', 'StudentController@index');
+    Route::get('/student/tutor', 'StudentController@view_tutor');
     Route::get('/student/contact', 'StudentController@contact');
     Route::post('/student/contact', 'StudentController@message');
     Route::get('/student/profile','StudentController@profile');

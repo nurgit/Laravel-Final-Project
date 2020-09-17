@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\contact;
+use App\Contact;
+use App\Tutor;
 use Session;
 use App\Http\Requests\UserRequests;
 
@@ -26,6 +27,19 @@ class StudentController extends Controller
 
     return view('student.profile')->with('user',$data);
   }
+  //view tutors----------
+  function view_tutor(Request $request){
+
+    $user = new Tutor();
+    $data =$user->where('activestatus','active')
+                ->get();
+                     //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
+                     
+
+    // return view('home.index')->with('users', $users);
+
+   return view('student.viewtutor')->with('user', $data);
+ }
 
   //contact us---------
   function contact(){

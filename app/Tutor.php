@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Tutor extends Model
 {
-    protected $table = "contact";
+    protected $table = "tutor";
 	public $timestamps = false;
 	/*const CREATED_AT = "create_time";
 	const UPDATED_AT = "update_time";*/

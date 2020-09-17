@@ -1,49 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>User List page</title>
-	<link rel="stylesheet" type="text/css" href="assests/css/profile.css" />
-	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@469&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
-	<style>
-body { 
-	background-color: #75a3a3;
-}
-table{
-	background-color: #5c85d6;
-	
-}
+<html lang="en" dir="ltr">
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta charset="utf-8">
+    <title></title>
 
-</style>
+    <style media="screen">
+                .details li {
+            list-style: none;
+          }
+          li {
+              margin-bottom:10px;
 
-</head>
-<body >
+          }
+    </style>
 
-	<a href="/student">Back</a>|
-	<a href="/logout">Logout</a>
+  </head>
+  <body style="background-color:#25274d;">
 
+    <div  class="container" style="margin-top: 70px;">
 
-	<h3>User List</h3>
-	<table border="0" >
-		<tr>
-			<th>ID</th>
-			<th>USERNAME</th>
-			<th>PASSWORD</th>
-      <th>Email</th>
-			<th>TYPE</th>
-
-            @for($i=0; $i != count($user); $i++)
-		<tr>
-			<td>{{$user[$i]->id}}</td>
-			<td>{{$user[$i]->username}}</td>
-			<td>{{$user[$i]->password}}</td>
-			<td>{{$user[$i]->email}}</td>
-            <td>{{$user[$i]->type}}</td>
-			
-		</tr>
-	@endfor
-	</table>
+             <div class="jumbotron">
+               <a href="/student">Back</a>|
+               <a href="/logout">Logout</a>
+               <div class="row">
+                   <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                   <img src="{{URL::asset('img/unnamed.png')}}" class="img">
+                   </div>
+                   <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                       <div class="container" style="border-bottom:1px solid black">
+                         <h2>
 
 
+                         @if (Session::has('username'))
+                         {{{ Session::get('username') }}}
+                         @endif
 
-</body>
+                       </h2>
+                       </div>
+                       </br>
+
+                       <ul class="container details">
+                         @foreach ($user as $user)
+                          <li><p><span class="" style="width:50px;"></span><b> User Name: </b> {{$user->username}}</p></li>
+                         <li><p><b>Id      :</b> <span class="" style="width:50px;"></span>{{$user->id}}</p></li>
+                         <li><p><span class="" style="width:50px;"><b>Email  :</b></span>{{$user->email}}</p></li>
+                         <li><p><span class="" style="width:50px;"><b>User Type:</b></span>{{$user->type}}</p></li>
+                         @endforeach
+                       </ul>
+
+                   </div>
+               </div>
+             </div>
+
+  </body>
 </html>

@@ -28,12 +28,13 @@
 
                  <li><a href="/"><span>01.</span>Home</a></li>
                  <li><a href="/student/profile"><span>02.</span>View Profile</a></li>
-                 <li><a href="/student/alltutor"><span>03.</span>Tutors</a></li>
-                 <li><a href="/student/packages"><span>04.</span>Buy Subscription</a></li>
+                 <li><a href="/student/update/{{{ Session::get('id') }}}"><span>03.</span>Update Profile</a></li>
+                 <li><a href="/student/alltutor"><span>04.</span>Tutors</a></li>
+                 <li><a href="/student/packages"><span>05.</span>Buy Subscription</a></li>
                  <li><a href="/student/tutorials"><span>06.</span>Tutorials</a></li>
                  <li><a href="/student/blog"><span>07.</span>Write Blog</a></li>
                  <li><a href="/student/rblog"><span>08.</span>Read Blog</a></li>
-                 <li><a href="student/contact"><span>06.</span>Contact Us</a></li>
+                 <li><a href="/student/contact"><span>09.</span>Contact Us</a></li>
                  <li><a href="/logout"><span>09.</span>Logout</a></li>
              </ul>
 

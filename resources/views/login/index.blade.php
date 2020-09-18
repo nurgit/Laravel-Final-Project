@@ -12,8 +12,10 @@
 				<h2 style="color:white">Log In</h2>
 				<input type="text" name="username"
 				placeholder="Username">
+				{!! $errors->first('username', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
 				<input type="password" name="password"
 				placeholder="Password"><br><br>
+				{!! $errors->first('password', '<div class="error-block" style ="color:#ffff00;">:message</div>') !!}
 				<a href=""><input type="submit" name="submit" value="Log In"></a><br><br>
 
 

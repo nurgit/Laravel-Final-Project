@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -15,6 +16,7 @@ class LoginController extends Controller
 
 
     function verify(Request $request){
+
 
 
            // $request->session()->put('username', $request->username);
@@ -31,7 +33,23 @@ class LoginController extends Controller
            //  $request->session()->has('username');
            //  $request->session()->pull('username');
 
+           $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required'
+                       
+                    
+            
+                 
+          ]);
+        
+          if ($validator->fails()) {
+            return redirect('/login')
+                  ->with('errors', $validator->errors())
+                  ->withInput();
+          }
 
+       else
+       {
         $user = new User();
         //data = $user->all();
       //  print_r($data);
@@ -61,6 +79,7 @@ class LoginController extends Controller
              elseif($data[0]['type']=='student'){
                 
                  $request->session()->put('username', $request->username);
+                 $request->session()->put('id',$data[0]->id);
                 
 
                   return redirect('/student');
@@ -96,4 +115,5 @@ class LoginController extends Controller
             return redirect('/login');
         }
     }
+       }
 }

@@ -91,7 +91,7 @@ class StudentController extends Controller
               
       ],
            'email'    => 'required|email',
-           'type'     =>'required'
+          
     ]);
   
     if ($validator->fails()) {
@@ -105,7 +105,7 @@ class StudentController extends Controller
       $user->username     = $request->username;
       $user->password     = $request->password;
       $user->email        = $request->email;
-      $user->type         = $request->type;
+   
       $user->save();
 
     return redirect('student');

@@ -58,13 +58,15 @@
 <!-- // Tutor home page -->
                <li><a href="/tutor/profile/{{{ Session::get('id') }}}"><span>01.</span>My profile </a></li>
                <li><a href="/tutor/update/{{{ Session::get('id') }}}"><span>02.</span>Update profile </a></li>
-               <li><a href="/tutor/view_students"><span>03.</span>My students</a></li>
+               <li><a href="/tutor/student"><span>03.</span>My students</a></li>
 
-               <li><a href="/tutor/create/"><span>04.</span>Join as a paid tutor</a></li>
-               <li><a href="/tutor/contact"><span>05.</span>Contact us</a></li>
+               <li><a href="/tutor/requestPaidTutor/{{{ Session::get('id') }}}"><span>04.</span>Join as a paid tutor</a></li>
+               <li><a href="/tutor/contact/{{{ Session::get('id') }}}"><span>05.</span>Contact us</a></li>
                <li><a href=""><span>06.</span>Online class  </a></li>
                <li><a href="/tutor/writeblog"><span>07.</span>Write Blog</a></li>
-               <li><a href="/tutor/readblog"><span>08.</span>Read Blog</a></li>
+               <li><a href="/tutor/readBlog"><span>08.</span>Read Blog</a></li>
+
+                
                <li><a href="/logout"><span>09.</span>Logout</a></li>
              </ul>
 
@@ -72,10 +74,10 @@
          </nav>
 
          <ul class="social-icons list-inline">
-             <li><a href=""><i class="fa fa-facebook"></i></a></li>
-             <li><a href=""><i class="fa fa-twitter"></i></a></li>
+             <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+             <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
              <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-             <li><a href=""><i class="fa fa-instagram"></i></a></li>
+             <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
          </ul>
 
          <div class="corner-circle">

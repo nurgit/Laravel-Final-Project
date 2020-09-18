@@ -7,6 +7,8 @@ use App\User;
 use App\Contact;
 use App\Tutor;
 use Session;
+
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequests;
 
 
@@ -16,6 +18,8 @@ class StudentController extends Controller
 
     return view('student.index');
   }
+
+
 
   //view profile------
 
@@ -53,8 +57,6 @@ class StudentController extends Controller
   function message( Request $request){
     
 
-  
-
       $user = new Contact();
       
         $user->email        = $request->email;
@@ -75,13 +77,29 @@ class StudentController extends Controller
    return view('student.update')->with('user', $data);
  }
 
- function update( Request $request, $id){
+ public function update( Request $request, $id){
   // $user = new User();
-  // $user = $user->where('id', $username)
-  //  ->get();
-  print_r($id);
-
-    // $user = User::where($username);
+  // $data = $user->where('id', $id)
+  // ->get();
+ // return view('student.update')->with('user', $data);
+  
+  
+    $validator = Validator::make($request->all(), [
+      'username' => 'required',
+      'password' => ['required', 
+                 'min:4'
+              
+      ],
+           'email'    => 'required|email',
+           'type'     =>'required'
+    ]);
+  
+    if ($validator->fails()) {
+      
+      return redirect('/student/update/'.$id)
+            ->with('errors', $validator->errors())
+            ->withInput();
+    }
     $user = User::find($id);
     
       $user->username     = $request->username;

@@ -57,22 +57,22 @@
         <div class="form-group col-md-6">
           <label >User Name</label>
           <input type="username" class="form-control" id="username" name="username"  value="{{$user->username}}">
+          {!! $errors->first('username', '<div class="error-block" style ="color:red;">:message</div>') !!}
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-4">
           <label>Password</label>
-          <input type="text" class="form-control" id="password" name="password"  value="{{$user->password}}">
+          <input type="password" class="form-control" id="password" name="password"  value="{{$user->password}}">
+          {!! $errors->first('password', '<div class="error-block" style ="color:red;">:message</div>') !!}
         </div>
           <div class="form-group col-md-4">
             <label>Email</label>
             <input type="text" class="form-control" id="Email" name="email"  value="{{$user->email}}">
+            {!! $errors->first('email', '<div class="error-block" style ="color:red;">:message</div>') !!}
           </div>
-        <div class="form-group col-md-4">
-          <label>User Type</label>
-            <input type="text" class="form-control" id="type" name="type"  value="{{$user->type}}">
-        </div>
+        
       </div>
 
 

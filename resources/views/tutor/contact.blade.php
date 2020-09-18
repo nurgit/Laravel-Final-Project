@@ -54,7 +54,7 @@
   </head>
   <body>
 
-<form class="" method="post" enctype="multipart/form-data">
+<form class="" method="post" method="post">
 
   <div class="container contact">
 <div class="row">
@@ -69,29 +69,25 @@
   </div>
   <div class="col-md-9">
     <div class="contact-form">
-      @foreach ($user as $user)
       <div class="form-group">
-
         <label class="control-label col-sm-2" for="fname">ID:</label>
         <div class="col-sm-10">
 
-        <input type="text" name="uId" class="form-control" id="fname" value="{{$user->id}}"  readonly >
+        <input type="text" name="id" class="form-control" id="fname" value="<%= user.id%>"  readonly >
         </div>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label class="control-label col-sm-2" for="lname">User Name:</label>
         <div class="col-sm-10">
-        <input type="text" name="username" class="form-control" id="lname" value="{{$user->username}}" readonly >
+        <input type="text" name="username" class="form-control" id="lname" value="<%= user.username%>" readonly >
         </div>
-      </div>
-
+      </div> -->
       <div class="form-group">
         <label class="control-label col-sm-2" for="email">Email:</label>
         <div class="col-sm-10">
-        <input type="email" name="email" class="form-control" id="email" value="{{$user->email}}" readonly>
+        <input type="email" name="email" class="form-control" id="email" value="<%= user.email %>" readonly>
         </div>
       </div>
-
       <div class="form-group">
         <label class="control-label col-sm-2" for="comment">Comment:</label>
         <div class="col-sm-10">
@@ -106,7 +102,6 @@
         <!-- <input type="submit" name="submit" value="Sign up" > -->
         </div>
       </div>
-        @endforeach
     </div>
   </div>
 </div>

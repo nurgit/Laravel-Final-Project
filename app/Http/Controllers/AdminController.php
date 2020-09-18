@@ -78,7 +78,7 @@ class AdminController extends Controller
 
 	if ($validator->fails()) {
 		 
-		return redirect('Admin/edituser/{id}')
+		return redirect('Admin/edituser/'.$id)
 					->with('errors', $validator->errors())
 					->withInput();
 	}

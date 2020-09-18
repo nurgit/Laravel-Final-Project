@@ -41,43 +41,44 @@
       <a href="/tutor">Back</a>|
       <a href="/logout">Logout</a>
 
-        <h1 class="m-heading">update
+        <h1 class="m-heading">"
           <i style="color:red;">@if (Session::has('username'))
           {{{ Session::get('username') }}}
-          @endif</i> Imformation
+          @endif</i>"
+
+          Join as a Paid Tutor
         </h1>
+
 
 
         <div class="form-row">
         @foreach ($user as $user)
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label >ID</label>
           <input type="id" class="form-control" id="id" name="id"  value="{{$user->id}}" readonly>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <label >User Name</label>
-          <input type="username" class="form-control" id="username" name="username"  value="{{$user->username}}" >
+          <input type="username" class="form-control" id="username" name="username"  value="{{$user->username}}" readonly >
+        </div>
+        <div class="form-group col-md-4">
+          <label>Active Status</label>
+          <input type="text" class="form-control" id="activestatus" name="activestatus"  value="pending" readonly>
         </div>
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-4">
-          <label>Password</label>
-          <input type="text" class="form-control" id="password" name="password"  value="{{$user->password}}">
+        <div class="form-group col-md-12">
+          <label>Subject </label>
+          <input type="text" class="form-control" id="subject" name="subject"  placeholder="Type Your Subject">
         </div>
-          <div class="form-group col-md-4">
-            <label>Email</label>
-            <input type="text" class="form-control" id="Email" name="email"  value="{{$user->email}}">
-          </div>
-        <div class="form-group col-md-4">
-          <label>User Type</label>
-            <input type="text" class="form-control" id="type" name="type"  value="{{$user->type}}" readonly>
+
         </div>
       </div>
 
 
       <!-- <button type="submit" name="submit"  class="btn btn-primary">UPDADE</button> -->
-      <td><input type="submit" name="submit" value="update"></td>
+      <td ><input  type="submit" name="submit" value="Requst"></td>
       @endforeach
 
     </form>

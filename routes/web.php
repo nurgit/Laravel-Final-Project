@@ -41,9 +41,22 @@ Route::middleware(['sess'])->group(function()
    // ********************************************tutor routes *****************************************************
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
    Route::get('/tutor/profile/{username}', 'TutorController@profile');
-   Route::get('/tutor/contact', 'TutorController@contact')->name('tutor.contact');//Using name routing ***
+   Route::get('/tutor/contact/{id}', 'TutorController@contact');//->name('tutor.contact');//Using name routing ***
+   Route::post('/tutor/contact/{id}', 'TutorController@contactInsert');
    Route::get('/tutor/update/{id}', 'TutorController@updateView');
    Route::post('/tutor/update/{id}', 'TutorController@update');
+   Route::get('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutorView');
+   Route::post('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutor');
+    Route::get('/tutor/student', 'TutorController@studentView');
+    Route::get('/tutor/readBlog', 'TutorController@readBlog');
+
+
+
+
+
+
+
+
 
 
    // ******************************************student Routes ******************************************************

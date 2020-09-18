@@ -25,7 +25,10 @@ Route::post('/signup', ['uses'=>'SignupController@store']);
 Route::middleware(['sess'])->group(function()
 {
     Route::get('/admin', 'AdminController@index');
+    Route::get('/dotnet', 'AdminController@dotnet');
+    Route::get('/node','AdminController@node');
     Route::get('/adminureg', 'AdminController@adminureg');
+    Route::post('/adminureg','AdminController@storeuser');
     Route::get('/viewuser', 'AdminController@view_users');
     Route::get('Admin/adminstudent', 'AdminController@adminstudent');
     Route::get('Admin/admintutor', 'AdminController@admintutor');
@@ -41,34 +44,17 @@ Route::middleware(['sess'])->group(function()
    // ********************************************tutor routes *****************************************************
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
    Route::get('/tutor/profile/{username}', 'TutorController@profile');
-   Route::get('/tutor/contact/{id}', 'TutorController@contact');//->name('tutor.contact');//Using name routing ***
-   Route::post('/tutor/contact/{id}', 'TutorController@contactInsert');
+   Route::get('/tutor/contact', 'TutorController@contact')->name('tutor.contact');//Using name routing ***
    Route::get('/tutor/update/{id}', 'TutorController@updateView');
    Route::post('/tutor/update/{id}', 'TutorController@update');
-   Route::get('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutorView');
-   Route::post('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutor');
-    Route::get('/tutor/student', 'TutorController@studentView');
-    Route::get('/tutor/readBlog', 'TutorController@readBlog');
-
-
-
-
-
-
-
-
 
 
    // ******************************************student Routes ******************************************************
 
 
     Route::get('/student', 'StudentController@index');
-    Route::get('/student/tutor', 'StudentController@view_tutor');
-    Route::get('/student/contact', 'StudentController@contact');
-    Route::post('/student/contact', 'StudentController@message');
+
     Route::get('/student/profile','StudentController@profile');
-    Route::get('/student/update/{id}', 'StudentController@updateView');
-   Route::post('/student/update/{id}', 'StudentController@update');
 
 
 

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\contact;
 use App\Http\Requests\UserRequests;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class TutorController extends Controller
 {
@@ -46,9 +45,9 @@ class TutorController extends Controller
     // $user = new User();
     // $user = $user->where('id', $username)
     //  ->get();
-    // print_r($id);
+    print_r($id);
 
-
+      // $user = User::where($username);
       $user = User::find($id);
 
         $user->username     = $request->username;
@@ -64,84 +63,10 @@ class TutorController extends Controller
 
 
 //FOR TUTOR CONTACT---------------------------------------------------
-  function contact($id){
-
-    $user = new User();
-    $data = $user->where('id', $id)
-    ->get();
-    return view('tutor.contact')->with('user', $data);
+  function contact(){
+    return view('tutor.contact');
   }
 
-   function contactInsert(Request $request, $id){
-
-     $contact = new Contact();
-
-       $contact->uId          = $request->uId;
-       $contact->usernasme    = $request->username;
-       $contact->email        = $request->email;
-       $contact->message      = $request->contact;
-       $contact->save();
-       // print_r($contact);
-
-      return redirect('tutor');
-//
-//     DB::table('contact')->insertGetId(
-//     [
-//       // 'id' => '',
-//       'uId' = '$request->uId',
-//       'usernasme' ='$request->usernasme',
-//       'email'='$request->email',
-//       'message'='$request->contact'
-//   ]
-// );
-//     return view('tutor.contact')->with('user', $data);
-   }
-
-//Request for a Paid Tutor---------------------------------------------------
-
-
-  public function requestPaidTutorView($id){
-
-    $user = new User();
-    $data = $user->where('id', $id)
-    ->get();
-     return view('tutor.requestPaidTutor')->with('user', $data);
-   }
-
-   public function requestPaidTutor(Request $request, $id){
-
-
-     DB::table('tutor')->insert([
-        'id' => $request->id,
-         'name' => $request->username,
-         'subject' => $request->subject,
-         'activestatus' => $request->activestatus
-
-
-    ]);
-
-
-      return redirect('tutor');
-    }
-
-
-
-    //FOR Student---------------------------------------------------
-
-    public function studentView(){
-      $student= DB::table('student')
-       ->get();
-      //print_r($student);
-      return view('tutor.student')->with('student', $student);
-    }
-
-//  for Read And write Blog ------------------------------------
-public function readBlog(){
-  $blog= DB::table('blog')
-   ->get();
-//  print_r($blog);
-  return view('tutor.readBlog')->with('blog', $blog);
-}
 
 
 }

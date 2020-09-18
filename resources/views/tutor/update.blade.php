@@ -52,11 +52,11 @@
         @foreach ($user as $user)
         <div class="form-group col-md-6">
           <label >ID</label>
-          <input type="id" class="form-control" id="id" name="id"  value="{{$user->id}}" readonly>
+          <input type="id" class="form-control" id="id" name="id"  value="{{$user->id}}">
         </div>
         <div class="form-group col-md-6">
           <label >User Name</label>
-          <input type="username" class="form-control" id="username" name="username"  value="{{$user->username}}" >
+          <input type="username" class="form-control" id="username" name="username"  value="{{$user->username}}">
         </div>
       </div>
 
@@ -71,7 +71,7 @@
           </div>
         <div class="form-group col-md-4">
           <label>User Type</label>
-            <input type="text" class="form-control" id="type" name="type"  value="{{$user->type}}" readonly>
+            <input type="text" class="form-control" id="type" name="type"  value="{{$user->type}}">
         </div>
       </div>
 

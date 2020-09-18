@@ -60,6 +60,8 @@ function myFunction() {
 </script>
 </head>
 <body style="background-color : #f1c30f">
+   <a href="/admin">Back</a>|
+      <a href="/logout">Logout</a><br>
 
 <h2 style="text-align: center;">All User's Information </h2>
 

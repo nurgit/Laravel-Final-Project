@@ -74,7 +74,7 @@ class TutorController extends Controller
 
    function contactInsert(Request $request, $id){
 
-     $contact = new contact();
+     $contact = new Contact();
 
        $contact->uId          = $request->uId;
        $contact->usernasme    = $request->username;

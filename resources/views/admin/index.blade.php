@@ -37,7 +37,7 @@
                  <li><a href="Admin/adminstudent"><span></span>Student Section</a></li>
                  <li><a href="Admin/payment"><span></span>Payment information</a></li>
                   <li><a href="/dotnet"><span></span>API Call DOT NET</a></li>
-                   <li><a href="/node"><span></span>API Call Node Js</a></li>  
+                   <li><a href="/guzz"><span></span>API Call Node Js</a></li>  
                  <li><a href="/logout"><span></span>Logout</a></li>
              </ul>
 

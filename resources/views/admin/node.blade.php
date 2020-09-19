@@ -27,7 +27,7 @@
     <button id="load">Load Data</button>
     <br/>
     <label id="msg"></label>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <br/><br/>
             <table id="list" class="table table-striped table-bordered">
@@ -48,7 +48,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 
 </body>
 

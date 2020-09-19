@@ -170,4 +170,13 @@ class AdminController extends Controller
       return view('student.index');
     }
 
+public function getRequest()
+    {
+        $client = new \GuzzleHttp\Client();
+        $request = $client->get('http://localhost:3000/userlist');
+        $response = $request->getBody()->getContents();
+        echo '<pre>';
+        print_r($response);
+        exit;
+    }
 }

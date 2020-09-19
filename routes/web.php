@@ -32,12 +32,15 @@ Route::middleware(['sess'])->group(function()
     Route::get('/adminureg', 'AdminController@adminureg');
     Route::post('/adminureg','AdminController@storeuser');
     Route::get('/viewuser', 'AdminController@view_users');
+    Route::get('/viewstudent', 'AdminController@view_student');
     Route::get('Admin/adminstudent', 'AdminController@adminstudent');
     Route::get('Admin/admintutor', 'AdminController@admintutor');
     Route::get('Admin/edituser/{id}', 'AdminController@edituser');
     Route::post('Admin/edituser/{id}', 'AdminController@updateduser');
     Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
     Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
+    Route::get('Admin/deletestudent/{id}', 'AdminController@deletestudent');
+    Route::post('Admin/deletestudent/{id}', 'AdminController@removestudent');
 
 
 

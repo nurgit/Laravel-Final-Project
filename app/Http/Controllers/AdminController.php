@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\User;
+use App\Student;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -179,4 +180,43 @@ public function getRequest()
         print_r($response);
         exit;
     }
-}
+
+//****************************************************************    Student Dashboard ***************************
+
+  function view_student(Request $request){
+
+       $users = DB::table('student')
+                        //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
+                        ->get();
+
+       // return view('home.index')->with('users', $users);
+
+      return view('admin.viewstudent')->with('users', $users);
+
+    }
+
+
+     function deletestudent($student_id){
+
+
+         $user = Student::find($student_id);
+       
+
+      return view('admin.deletestudent')->with('user', $user);
+
+      
+    }
+
+
+
+
+     function removestudent($student_id, Request $request){
+        
+      
+        if(Student::destroy($student_id)){
+            return redirect()->action('AdminController@view_student');
+        }else{
+            return redirect()->route('admin.deletestudent', $student_id);
+        }
+    }
+  }

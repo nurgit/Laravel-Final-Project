@@ -63,7 +63,7 @@ function myFunction() {
    <a href="Admin/adminstudent">Back</a>|
       <a href="/logout">Logout</a><br>
 
-<h2 style="text-align: center;">All User's Information </h2>
+<h2 style="text-align: center;">All Student's Information Admin Board </h2>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter ID here.." title="Type in a name">
 

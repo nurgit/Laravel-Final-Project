@@ -7,6 +7,7 @@ use App\User;
 use App\contact;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class TutorController extends Controller
 {
@@ -139,9 +140,49 @@ class TutorController extends Controller
 public function readBlog(){
   $blog= DB::table('blog')
    ->get();
+
 //  print_r($blog);
   return view('tutor.readBlog')->with('blog', $blog);
 }
+//----------------------for pdf -----------------
+function pdf()
+   {
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($this->readBlog1());
+    return $pdf->stream();
+
+   }
+
+   function readBlog1()
+   {
+     $blog= DB::table('blog')
+      ->get();
+
+      $output='<h2>Read Blog</h2>';
+
+      for($i=0; $i != count($blog); $i++){
+      $output .= '
+      <div class="row">
+        <div class="leftcolumn">
+          <div class="card">
+            <h2 class="title">'.$blog[$i]->article_name.'	</h2>
+            <p>	<br>'.$blog[$i]->article.'</p>
+            <h4><br><b>Author:</b><i>'.	$blog[$i]->author.'</i></h5>
+          </div>
+          echo ($);
+
+        </div>
+        </div>
+
+       ';
+         }
+       $output .= '</table>';
+       return $output;
+
+
+
+  }
+
 
 
 }

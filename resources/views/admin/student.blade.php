@@ -31,7 +31,7 @@
              <ul>
 
                 <li><a href="/admin"><span></span>Home</a></li>
-                 <li><a href="/user/view_student"><span></span>View Student Information</a></li>
+                 <li><a href="/viewstudent"><span></span>View Student Information</a></li>
                 <li><a href="/user/view_users"><span></span>All User</a></li>
                  <li><a href="/user/create"><span></span>Create User</a></li>
                 

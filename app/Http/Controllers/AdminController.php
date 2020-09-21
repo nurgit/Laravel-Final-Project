@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\User;
+use App\Student;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -66,8 +67,8 @@ class AdminController extends Controller
 
 
         	$validator = Validator::make($request->all(), [
-		'username' => 'required',
-		'password' => ['required', 
+		      'username' => 'required',
+		       'password' => ['required', 
                'min:4'
             //    'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
 			//    'confirmed'
@@ -116,23 +117,23 @@ class AdminController extends Controller
     }
 
     function storeuser(Request $request){
- //    	$validator = Validator::make($request->all(), [
-	// 	'username' => 'required',
-	// 	'password' => ['required', 
- //               'min:4'
- //            //    'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
-	// 		//    'confirmed'
-	// 	],
-	// 		   'email'    => 'required|email',
-	// 		   'type'     =>'required'
-	// ]);
+    	$validator = Validator::make($request->all(), [
+		'username' => 'required',
+		'password' => ['required', 
+               'min:4'
+            //    'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 
+			//    'confirmed'
+		],
+			   'email'    => 'required|email',
+			   'type'     =>'required'
+	]);
 
-	// if ($validator->fails()) {
-	// 	return view('Admin/storeuser')
-	// 				->with('errors', $validator->errors())
-	// 				->withInput();
-	// }
-
+	if ($validator->fails()) {
+		return view('Admin/storeuser')
+					->with('errors', $validator->errors())
+					->withInput();
+	}
+    else {
 		
   $user = new User();
         $user->username     = $request->username;
@@ -148,7 +149,7 @@ class AdminController extends Controller
     		 return redirect()->action('AdminController@view_users');
     	
 
-
+}
 
 
     }
@@ -170,4 +171,95 @@ class AdminController extends Controller
       return view('student.index');
     }
 
-}
+public function getRequest()
+    {
+        $client = new \GuzzleHttp\Client();
+        $request = $client->get('http://localhost:3000/userlist');
+        $response = $request->getBody()->getContents();
+        echo '<pre>';
+        print_r($response);
+        exit;
+    }
+
+//****************************************************************    Student Dashboard ***************************
+
+  function view_student(Request $request){
+
+       $users = DB::table('student')
+                        //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
+                        ->get();
+
+       // return view('home.index')->with('users', $users);
+
+      return view('admin.viewstudent')->with('users', $users);
+
+    }
+
+
+     function editstudent($student_id){
+
+         $user = Student::find($student_id);
+       
+
+      return view('admin.editstudent')->with('user', $user);
+    }
+
+
+    function updatestudent( Request $request, $student_id){
+
+
+
+          $validator = Validator::make($request->all(), [
+          'name' => 'required',
+         'class'    => 'required',
+         'package_id'     =>'required'
+  ]);
+
+  if ($validator->fails()) {
+     
+    return redirect('Admin/editstudent/'.$student_id)
+          ->with('errors', $validator->errors())
+          ->withInput();
+  }
+    else {
+   
+      $user = Student::find($student_id);
+      
+        $user->student_id     = $request->student_id;
+        $user->login_id     = $request->login_id;
+        $user->name        = $request->name;
+        $user->class         = $request->class;
+        $user->package_id         = $request->package_id;
+
+        $user->save();
+
+      
+      return redirect()->action('AdminController@view_student');
+  }
+    }
+
+
+     function deletestudent($student_id){
+
+
+         $user = Student::find($student_id);
+       
+
+      return view('admin.deletestudent')->with('user', $user);
+
+      
+    }
+
+
+
+
+     function removestudent($student_id, Request $request){
+        
+      
+        if(Student::destroy($student_id)){
+            return redirect()->action('AdminController@view_student');
+        }else{
+            return redirect()->route('admin.deletestudent', $student_id);
+        }
+    }
+  }

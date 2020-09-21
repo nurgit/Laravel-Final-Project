@@ -14,17 +14,17 @@ $(document).ready(function(){
 				if(xmlHttp.status==200)
 				{
 					var data=xmlHttp.responseJSON;
-					var str='';
-					for (var i = 0; i < data.length; i++) {
-						str+="<tr><td>"+data[i].id+"</td><td>"+data[i].username+
-						"</td><td>"+data[i].password+"</td><td>"+data[i].email+
-						"</td><td>"+data[i].type+"</td><td>"
+					// var str='';
+					// for (var i = 0; i < data.length; i++) {
+					// 	str+="<tr><td>"+data[i].id+"</td><td>"+data[i].username+
+					// 	"</td><td>"+data[i].password+"</td><td>"+data[i].email+
+					// 	"</td><td>"+data[i].type+"</td><td>"
 						
 						  
-						"</td></tr>";
-					};
+					// 	"</td></tr>";
+					// };
 
-					$("#list tbody").html(str);
+					//$("#list tbody").html(str);
 
 				}
 				else

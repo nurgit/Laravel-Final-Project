@@ -37,10 +37,6 @@ Route::middleware(['sess'])->group(function()
     Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
     Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
 
-
-
-
-
    // ********************************************tutor routes *****************************************************
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
    Route::get('/tutor/profile/{username}', 'TutorController@profile');
@@ -52,14 +48,6 @@ Route::middleware(['sess'])->group(function()
    Route::post('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutor');
     Route::get('/tutor/student', 'TutorController@studentView');
     Route::get('/tutor/readBlog', 'TutorController@readBlog');
-
-
-
-
-
-
-
-
 
 
    // ******************************************student Routes ******************************************************

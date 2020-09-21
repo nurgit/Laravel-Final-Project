@@ -169,7 +169,7 @@ function pdf()
             <p>	<br>'.$blog[$i]->article.'</p>
             <h4><br><b>Author:</b><i>'.	$blog[$i]->author.'</i></h5>
           </div>
-          echo ($);
+          
 
         </div>
         </div>

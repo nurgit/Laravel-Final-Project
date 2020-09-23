@@ -192,4 +192,15 @@ function pdf()
   
     }
 
+    //node_api_call
+    public function tutorials()
+    {
+        $client = new \GuzzleHttp\Client();
+        $request = $client->get('http://localhost:3000/tutorials');
+        $response = $request->getBody()->getContents();
+        echo '<pre>';
+        print_r($response);
+        exit;
+    }
+
 }

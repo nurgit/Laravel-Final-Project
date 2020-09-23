@@ -72,6 +72,10 @@ Route::middleware(['sess'])->group(function()
     Route::get('/student/profile','StudentController@profile');
     Route::get('/student/update/{id}', 'StudentController@updateView');
    Route::post('/student/update/{id}', 'StudentController@update');
+   Route::get('/student/readBlog', 'StudentController@readBlog');
+    Route::get('/student/readBlog/pdf', 'StudentController@pdf');
+    Route::get('/student/writeBlog', 'StudentController@writeBlog');
+    Route::post('/student/writeBlog', 'StudentController@postBlog');
 //    Route::get('/student/update/{id}', 'StudentController@update');
 
 

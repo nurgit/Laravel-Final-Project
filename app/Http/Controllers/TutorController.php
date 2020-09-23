@@ -144,6 +144,8 @@ public function readBlog(){
 //  print_r($blog);
   return view('tutor.readBlog')->with('blog', $blog);
 }
+
+
 //----------------------for pdf -----------------
 function pdf()
    {
@@ -153,12 +155,14 @@ function pdf()
 
    }
 
+
    function readBlog1()
    {
      $blog= DB::table('blog')
       ->get();
 
       $output='<h2>Read Blog</h2>';
+
 
       for($i=0; $i != count($blog); $i++){
       $output .= '

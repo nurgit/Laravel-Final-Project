@@ -65,8 +65,9 @@
                <li><a href=""><span>06.</span>Online class  </a></li>
                <li><a href="/tutor/writeblog"><span>07.</span>Write Blog</a></li>
                <li><a href="/tutor/readBlog"><span>08.</span>Read Blog</a></li>
+               <li><a href="{{ url('tutor/readBlog/pdf') }}"><span>08.</span>Pint Blog Post</a></li>
 
-                
+
                <li><a href="/logout"><span>09.</span>Logout</a></li>
              </ul>
 

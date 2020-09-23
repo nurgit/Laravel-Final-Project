@@ -80,6 +80,8 @@ body {
 
           <a href="{{ url('tutor/readBlog/pdf') }}" class="btn btn-danger">Convert into PDF</a>
 
+
+
         </div>
 
 

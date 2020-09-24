@@ -6,6 +6,12 @@
 * {
   box-sizing: border-box;
 }
+.btn{
+  padding : 5px;
+  background-color:   #1ad1ff;
+  border-radius :5px;
+}
+
 
 #myInput {
   background-image: url('/css/searchicon.png');
@@ -71,6 +77,7 @@ function myFunction() {
     <th style="width:20%;">UserName</th>
   
     <th style="width:30%;">Subject</th>
+    <th style="width:30%;">Subscription</th>
     
   </tr>
  @for($i=0; $i != count($user); $i++)
@@ -78,6 +85,7 @@ function myFunction() {
     <td>{{$user[$i]->id}}</td>
     <td>{{$user[$i]->name}}</td>
     <td>{{$user[$i]->subject}}</td>
+    <td><a href="/student/payment/{{$user[$i]->id}}"><button type="button"  class="btn">Subscribe</button></a></td>
   
    
   </tr>

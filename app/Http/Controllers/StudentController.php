@@ -7,6 +7,7 @@ use App\User;
 use App\Contact;
 use App\Tutor;
 use App\Blog;
+use App\payment;
 use Session;
 
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,27 @@ class StudentController extends Controller
   }
 
 
+//payment
+public function payment($id){
+  $user = Tutor::find($id);
+  return view('student.payment')->with('user',$user);
+}
 
+  function postpayment(Request $request){
+    
+    $user=new payment();
+   $user->student_id     = $request->student_id ;
+    $user->student_name     = $request->student_name;
+    $user->tutor_id        = $request->tutor_id;
+    $user->tutor_name        = $request->tutor_name;
+    $user->amount        = $request->amount;
+    $user->date       = $request->date;
+ $user->save();
+
+  return redirect('student');
+
+
+  }
   //view profile------
 
   function profile(){

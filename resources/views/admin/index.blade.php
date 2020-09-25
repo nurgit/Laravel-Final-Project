@@ -30,7 +30,7 @@
          <nav class="nav2">
              <ul>
 
-                 
+
                  <li><a href="/viewuser"><span></span>All User</a></li>
                  <li><a href="/adminureg"><span></span>Create User</a></li>
                  <li><a href="Admin/admintutor"><span></span>tutor Section</a></li>
@@ -70,4 +70,3 @@
 </body>
 
 </html>
-

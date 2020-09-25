@@ -44,7 +44,7 @@
     @if (Session::has('username'))
 
 
-    <h1 class="h1">Write Your Content Here</h1>
+    <h1 class="h1">Upload Your video Tutorial</h1>
 
 
     <form method="post" >
@@ -57,8 +57,8 @@
     <br>
     <h2>Article Name:</h2> <textarea rows="2" cols="150" name="articlename" ></textarea><br>
     {!! $errors->first('articlename', '<div class="error-block" style ="color:red;">:message</div>') !!}<br>
-    <h2>Enter text here:</h2>
-    <textarea rows="30" cols="170" name="article"  >
+    <h2>Enter video Tutori Link :</h2>
+    <textarea rows="2" cols="150" name="article"  >
     </textarea>
     {!! $errors->first('article', '<div class="error-block" style ="color:red;">:message</div>') !!}<br>
 

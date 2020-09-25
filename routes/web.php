@@ -57,6 +57,14 @@ Route::middleware(['sess'])->group(function()
    Route::get('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutorView');
    Route::post('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutor');
     Route::get('/tutor/student', 'TutorController@studentView');
+
+    Route::get('/tutor/writeBlog', 'TutorController@writeBlogView');
+    Route::post('/tutor/writeBlog', 'TutorController@writeBlog');
+
+    Route::get('/tutor/uploadTutotial', 'TutorController@uploadTutotialView');
+    Route::post('/tutor/uploadTutotial', 'TutorController@uploadTutotial');
+    Route::get('/guzz', 'AdminController@getRequest');//using Api
+
     Route::get('/tutor/readBlog', 'TutorController@readBlog');
     Route::get('/tutor/readBlog/pdf', 'TutorController@pdf');
 

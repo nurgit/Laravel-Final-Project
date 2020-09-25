@@ -97,7 +97,10 @@
         <div class="col-sm-10">
             <!-- <input type="email" name="contact" class="form-control" id="email" placeholder="Enter comment" > -->
 
-        <textarea class="form-control" name="contact" rows="5" id="comment"></textarea>
+        <textarea class="form-control" name="message" rows="5" id="comment"></textarea>
+
+        {!! $errors->first('message', '<div class="error-block" style ="color:red;">:message</div>') !!}
+      </div>
         </div>
       </div>
       <div class="form-group">

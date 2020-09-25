@@ -56,19 +56,24 @@
          <nav class="nav2">
              <ul>
 <!-- // Tutor home page -->
-               <li><a href="/tutor/profile/{{{ Session::get('id') }}}"><span>01.</span>My profile </a></li>
-               <li><a href="/tutor/update/{{{ Session::get('id') }}}"><span>02.</span>Update profile </a></li>
-               <li><a href="/tutor/student"><span>03.</span>My students</a></li>
+               <li><a href="/tutor/profile/{{{ Session::get('id') }}}"><span></span>My profile </a></li>
+               <li><a href="/tutor/update/{{{ Session::get('id') }}}"><span></span>Update profile </a></li>
+               <li><a href="/tutor/student"><span></span>My students</a></li>
 
-               <li><a href="/tutor/requestPaidTutor/{{{ Session::get('id') }}}"><span>04.</span>Join as a paid tutor</a></li>
-               <li><a href="/tutor/contact/{{{ Session::get('id') }}}"><span>05.</span>Contact us</a></li>
-               <li><a href=""><span>06.</span>Online class  </a></li>
-               <li><a href="/tutor/writeblog"><span>07.</span>Write Blog</a></li>
-               <li><a href="/tutor/readBlog"><span>08.</span>Read Blog</a></li>
-               <li><a href="{{ url('tutor/readBlog/pdf') }}"><span>08.</span>Pint Blog Post</a></li>
+               <li><a href="/tutor/requestPaidTutor/{{{ Session::get('id') }}}"><span></span>Join as a paid tutor</a></li>
+               <li><a href="/tutor/contact/{{{ Session::get('id') }}}"><span></span>Contact us</a></li>
+               <li><a href=""><span></span>Online class  </a></li>
+
+               <li><a href="/tutor/writeBlog"><span></span>Write Blog</a></li>
+
+               <li><a href="/tutor/uploadTutotial"><span></span>Upload Tutotial </a></li>
+                <li><a href="guzz"><span></span>All Tutotial </a></li>
+
+               <li><a href="/tutor/readBlog"><span></span>Read Blog</a></li>
+               <li><a href="{{ url('tutor/readBlog/pdf') }}"><span></span>Pint Blog Post</a></li>
 
 
-               <li><a href="/logout"><span>09.</span>Logout</a></li>
+               <li><a href="/logout"><span></span>Logout</a></li>
              </ul>
 
 

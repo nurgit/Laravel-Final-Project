@@ -71,6 +71,7 @@
         <div class="form-group col-md-12">
           <label>Subject </label>
           <input type="text" class="form-control" id="subject" name="subject"  placeholder="Type Your Subject">
+            {!! $errors->first('subject', '<div class="error-block" style ="color:red;">:contact</div>') !!}
         </div>
 
         </div>

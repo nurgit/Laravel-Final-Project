@@ -63,7 +63,7 @@ Route::middleware(['sess'])->group(function()
 
     Route::get('/tutor/uploadTutotial', 'TutorController@uploadTutotialView');
     Route::post('/tutor/uploadTutotial', 'TutorController@uploadTutotial');
-    Route::get('/guzz', 'AdminController@getRequest');//using Api
+    Route::get('/guzz', 'TutorController@allTutorial');//using Api
 
     Route::get('/tutor/readBlog', 'TutorController@readBlog');
     Route::get('/tutor/readBlog/pdf', 'TutorController@pdf');
@@ -84,9 +84,6 @@ Route::middleware(['sess'])->group(function()
     Route::get('/student/readBlog/pdf', 'StudentController@pdf');
     Route::get('/student/writeBlog', 'StudentController@writeBlog');
     Route::post('/student/writeBlog', 'StudentController@postBlog');
-    Route::get('/student/tutorials', 'StudentController@tutorials');
-    Route::get('/student/payment/{id}', 'StudentController@payment');
-    Route::post('/student/payment/{id}', 'StudentController@postpayment');
 //    Route::get('/student/update/{id}', 'StudentController@update');
 
 

@@ -32,10 +32,10 @@
 
                 <li><a href="/admin"><span></span>Home</a></li>
                  <li><a href="/viewstudent"><span></span>View Student Information</a></li>
-                <li><a href="/user/view_users"><span></span>All User</a></li>
-                 <li><a href="/user/create"><span></span>Create User</a></li>
+                <li><a href="/viewuser"><span></span>All User</a></li>
+                 <li><a href="/adminureg"><span></span>Create User</a></li>
                 
-                 <li><a href="/user/tutor"><span></span>Tutor Section</a></li>
+                 <li><a href="/Admin/admintutor"><span></span>Tutor Section</a></li>
                  <li><a href="/user/payment"><span></span>Payment information</a></li>
                  <li><a href="/logout"><span></span>Logout</a></li>
              </ul>

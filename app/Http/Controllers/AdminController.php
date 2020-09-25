@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\User;
 use App\Student;
+use App\Tutor;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -113,10 +114,12 @@ class AdminController extends Controller
 
       function adminureg(){
 
-      return view('admin.createuser');
+      return view('Admin.createuser');
     }
 
     function storeuser(Request $request){
+
+
     	$validator = Validator::make($request->all(), [
 		'username' => 'required',
 		'password' => ['required', 
@@ -129,7 +132,7 @@ class AdminController extends Controller
 	]);
 
 	if ($validator->fails()) {
-		return view('Admin/storeuser')
+		return redirect('/adminureg')
 					->with('errors', $validator->errors())
 					->withInput();
 	}
@@ -193,6 +196,12 @@ public function getRequest()
 
       return view('admin.viewstudent')->with('users', $users);
 
+    }
+
+    function createstudent()
+    {
+
+      return view ('admin.createstudent');
     }
 
 
@@ -262,4 +271,85 @@ public function getRequest()
             return redirect()->route('admin.deletestudent', $student_id);
         }
     }
+///////*******************************tutor section *****************************************
+
+    function tutorres(Request $request)
+    {
+      $users=DB::table('tutor')
+        ->where('activestatus', '=', 'pending')
+                        //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
+                        ->get();
+      return view('admin.tutorrequest')->with('users',$users);
+    }
+
+
+     function edittutor($id){
+
+         $user = Tutor::find($id);
+       
+
+      return view('admin.edittutor')->with('user', $user);
+    }
+
+
+    function updatetutor( Request $request, $id){
+
+
+
+          $validator = Validator::make($request->all(), [
+          'name' => 'required',
+         'subject'    => 'required',
+         'activestatus'     =>'required'
+  ]);
+
+  if ($validator->fails()) {
+     
+    return redirect('Admin/edittutor/'.$id)
+          ->with('errors', $validator->errors())
+          ->withInput();
   }
+    else {
+   
+      $user = Tutor::find($id);
+      
+        $user->id     = $request->id;
+        
+        $user->name        = $request->name;
+        $user->subject         = $request->subject;
+        $user->activestatus         = $request->activestatus;
+
+        $user->save();
+
+      
+      return redirect()->action('AdminController@tutorres');
+  }
+    }
+
+
+
+
+     function deletetutor($id){
+
+
+         $user = Tutor::find($id);
+       
+
+      return view('admin.deletetutor')->with('user', $user);
+
+      
+    }
+
+
+
+
+     function removetutor($id, Request $request){
+        
+      
+        if(Tutor::destroy($id)){
+            return redirect()->action('AdminController@tutorres');
+        }else{
+            return redirect()->route('admin.deletetutor', $id);
+        }
+    }
+  }
+      

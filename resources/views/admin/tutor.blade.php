@@ -31,11 +31,11 @@
              <ul>
 
                  <li><a href="/admin"><span></span>Home</a></li>
-                 <li><a href="/user/view_pending_tutor"><span></span>View Tutor request</a></li>
-                                  <li><a href="/user/view_users"><span></span>All User</a></li>
-                 <li><a href="/user/create"><span></span>Create User</a></li>
+                 <li><a href="/admintutorres"><span></span>View Tutor request</a></li>
+                <li><a href="/viewuser"><span></span>All User</a></li>
+                 <li><a href="/adminureg"><span></span>Create User</a></li>
                 
-                 <li><a href="/user/student"><span></span>Student Section</a></li>
+                 <li><a href="/Admin/adminstudent"><span></span>Student Section</a></li>
                  <li><a href="/user/payment"><span></span>Payment information</a></li>
                  <li><a href="/logout"><span></span>Logout</a></li>
              </ul>

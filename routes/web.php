@@ -31,6 +31,10 @@ Route::middleware(['sess'])->group(function()
     Route::get('/node','AdminController@node');
     Route::get('/adminureg', 'AdminController@adminureg');
     Route::post('/adminureg','AdminController@storeuser');
+    Route::post('/adminureg','AdminController@storeuser');
+    Route::get('/admintutorres','AdminController@tutorres');
+
+
 
     Route::get('/viewuser', 'AdminController@view_users');
     Route::get('/viewstudent', 'AdminController@view_student');
@@ -44,8 +48,18 @@ Route::middleware(['sess'])->group(function()
     Route::get('Admin/editstudent/{id}', 'AdminController@editstudent');
     Route::post('Admin/editstudent/{id}', 'AdminController@updatestudent');
 
+     Route::get('Admin/edittutor/{id}', 'AdminController@edittutor');
+    Route::post('Admin/edittutor/{id}', 'AdminController@updatetutor');
+
     Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
     Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
+    
+     Route::get('Admin/deletestudent/{id}', 'AdminController@deletestudent');
+    Route::post('Admin/deletestudent/{id}', 'AdminController@removestudent');
+
+     Route::get('Admin/deletetutor/{id}', 'AdminController@deletetutor');
+    Route::post('Admin/deletetutor/{id}', 'AdminController@removetutor');
+
 
    // ********************************************tutor routes *****************************************************
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');

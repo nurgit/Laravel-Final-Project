@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\User;
 use App\Student;
+use App\Tutor;
+use App\Payment;
+Use App\Packages;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -113,10 +116,12 @@ class AdminController extends Controller
 
       function adminureg(){
 
-      return view('admin.createuser');
+      return view('Admin.createuser');
     }
 
     function storeuser(Request $request){
+
+
     	$validator = Validator::make($request->all(), [
 		'username' => 'required',
 		'password' => ['required', 
@@ -129,7 +134,7 @@ class AdminController extends Controller
 	]);
 
 	if ($validator->fails()) {
-		return view('Admin/storeuser')
+		return redirect('/adminureg')
 					->with('errors', $validator->errors())
 					->withInput();
 	}
@@ -166,11 +171,7 @@ class AdminController extends Controller
       return view('admin.student');
     }
 
-      function payment(){
-
-      return view('student.index');
-    }
-
+    
 public function getRequest()
     {
         $client = new \GuzzleHttp\Client();
@@ -193,6 +194,12 @@ public function getRequest()
 
       return view('admin.viewstudent')->with('users', $users);
 
+    }
+
+    function createstudent()
+    {
+
+      return view ('admin.createstudent');
     }
 
 
@@ -262,4 +269,285 @@ public function getRequest()
             return redirect()->route('admin.deletestudent', $student_id);
         }
     }
+///////*******************************tutor section *****************************************
+
+    function tutorres(Request $request)
+    {
+      $users=DB::table('tutor')
+        ->where('activestatus', '=', 'pending')
+                        //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
+                        ->get();
+      return view('admin.tutorrequest')->with('users',$users);
+    }
+
+
+     function edittutor($id){
+
+         $user = Tutor::find($id);
+       
+
+      return view('admin.edittutor')->with('user', $user);
+    }
+
+
+    function updatetutor( Request $request, $id){
+
+
+
+          $validator = Validator::make($request->all(), [
+          'name' => 'required',
+         'subject'    => 'required',
+         'activestatus'     =>'required'
+  ]);
+
+  if ($validator->fails()) {
+     
+    return redirect('Admin/edittutor/'.$id)
+          ->with('errors', $validator->errors())
+          ->withInput();
   }
+    else {
+   
+      $user = Tutor::find($id);
+      
+        $user->id     = $request->id;
+        
+        $user->name        = $request->name;
+        $user->subject         = $request->subject;
+        $user->activestatus         = $request->activestatus;
+
+        $user->save();
+
+      
+      return redirect()->action('AdminController@tutorres');
+  }
+    }
+
+
+
+
+     function deletetutor($id){
+
+
+         $user = Tutor::find($id);
+       
+
+      return view('admin.deletetutor')->with('user', $user);
+
+      
+    }
+
+
+
+
+     function removetutor($id, Request $request){
+        
+      
+        if(Tutor::destroy($id)){
+            return redirect()->action('AdminController@tutorres');
+        }else{
+            return redirect()->route('admin.deletetutor', $id);
+        }
+    }
+
+
+
+   // ***************payment **************************
+
+    function payment()
+    {
+
+      return view('admin.payment');
+    }
+
+   
+function addpayment(){
+
+      return view('admin.addpayment');
+    }
+
+    function storepayment(Request $request)
+
+    {
+
+
+      $validator = Validator::make($request->all(), [
+    
+    'payerssid' =>'required',
+    'reciverttid'    => 'required',
+         'amount'     =>'required'
+  ]);
+
+  if ($validator->fails()) {
+    return redirect('/addpayment')
+          ->with('errors', $validator->errors())
+          ->withInput();
+  }
+    else {
+    
+  $user = new Payment();
+        
+      
+    $user->payerssid     = $request->payerssid;
+    $user->reciverttid        =$request->reciverttid;
+        $user->amount         = $request->amount;
+       
+        $user->save();
+
+        return redirect()->action('AdminController@payment');
+      
+         }
+   }
+
+
+    function view_tutorpayment(Request $request){
+
+       $users = DB::table('tutor')
+                        ->join('payment', 'tutor.id', '=', 'payment.reciverttid')
+                        ->get();
+
+
+
+      return view('admin.viewtutorpayment')->with('users', $users);
+    }
+
+    function tutorpdf()
+   {
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($this->readBlog1());
+    return $pdf->stream();
+
+   }
+     function STUDENTpdf()
+   {
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($this->readBlog2());
+    return $pdf->stream();
+
+   }
+    function readBlog1()
+   {
+
+     
+      
+
+     $blog = DB::table('tutor')
+                        
+                        ->join('payment', 'tutor.id', '=', 'payment.reciverttid')
+                        ->get();
+
+      $output=' <h3 align="center">Tutor Payment Information</h3>
+     <table width="100%" style="border-collapse: collapse; border: 0px;">
+      <tr>
+    <th style="border: 1px solid; padding:12px;" width="10%">Tutor ID</th>
+    <th style="border: 1px solid; padding:12px;" width="30%">Name</th>
+    <th style="border: 1px solid; padding:12px;" width="20%">Subject</th>
+    <th style="border: 1px solid; padding:12px;" width="20%">Status</th>
+    <th style="border: 1px solid; padding:12px;" width="10%">Payer ID</th>
+    <th style="border: 1px solid; padding:12px;" width="10%">Amount</th>
+   </tr>';
+  foreach($blog as $blog)
+     {
+      $output .= '
+
+
+      <tr>
+       <td style="border: 1px solid; padding:12px;">'.$blog->reciverttid.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->name.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->subject.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->activestatus.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->payerssid.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->amount.'</td>
+      </tr>
+      
+      
+           
+        
+          
+
+        
+
+       ';
+         }
+       $output .= '</table>';
+       return $output;
+
+
+
+  }
+function readBlog2()
+   {
+
+     
+      
+
+     $blog  = DB::table('student')
+                        ->join('packages', 'student.package_id', '=', 'packages.id')
+                        ->get();
+
+      $output=' <h3 align="center">Student Payment Information</h3>
+     <table width="100%" style="border-collapse: collapse; border: 0px;">
+      <tr>
+    <th style="border: 1px solid; padding:12px;" width="10%">STUDENT ID</th>
+    <th style="border: 1px solid; padding:12px;" width="30%">Name</th>
+    <th style="border: 1px solid; padding:12px;" width="20%">class</th>
+    <th style="border: 1px solid; padding:12px;" width="20%">TYPE</th>
+      <th style="border: 1px solid; padding:12px;" width="10%">Amount</th>
+   </tr>';
+  foreach($blog as $blog)
+     {
+      $output .= '
+     
+      <tr>
+       <td style="border: 1px solid; padding:12px;">'.$blog->login_id.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->name.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->class.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->type.'</td>
+       <td style="border: 1px solid; padding:12px;">'. $blog->ammount.'</td>
+       
+      </tr>
+      
+      
+           
+        
+          
+
+        
+
+       ';
+         }
+       $output .= '</table>';
+       return $output;
+
+
+
+  }
+
+     function view_studentpayment(Request $request){
+
+       $users = DB::table('student')
+                        ->join('packages', 'student.package_id', '=', 'packages.id')
+                        ->get();
+
+       // return view('home.index')->with('users', $users);
+
+      return view('admin.viewstudentpayment')->with('users', $users);
+    }
+
+      function monthlyincome(Request $request){
+
+       $users = DB::table('student')
+                        ->join('packages', 'student.package_id', '=', 'packages.id')
+                        ->get();
+
+
+       // return view('home.index')->with('users', $users);
+
+      return view('admin.monthlyincome')->with('users', $users);
+    }
+
+    
+  
+
+  }
+      

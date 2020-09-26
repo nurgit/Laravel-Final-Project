@@ -31,6 +31,19 @@ Route::middleware(['sess'])->group(function()
     Route::get('/node','AdminController@node');
     Route::get('/adminureg', 'AdminController@adminureg');
     Route::post('/adminureg','AdminController@storeuser');
+    Route::post('/adminureg','AdminController@storeuser');
+    Route::get('/admintutorres','AdminController@tutorres');
+    Route::get('/payment','AdminController@payment');
+    Route::get('/addpayment','AdminController@addpayment');
+     Route::post('/addpayment','AdminController@storepayment');
+     Route::get('/view_tutorpayment','AdminController@view_tutorpayment');
+     Route::get('/view_studentpayment','AdminController@view_studentpayment');
+     Route::get('/tutorpdf','AdminController@tutorpdf');
+     Route::get('/studentpdf','AdminController@studentpdf');
+     Route::get('/monthlyincome','AdminController@monthlyincome');
+
+
+
 
     Route::get('/viewuser', 'AdminController@view_users');
     Route::get('/viewstudent', 'AdminController@view_student');
@@ -44,8 +57,18 @@ Route::middleware(['sess'])->group(function()
     Route::get('Admin/editstudent/{id}', 'AdminController@editstudent');
     Route::post('Admin/editstudent/{id}', 'AdminController@updatestudent');
 
+     Route::get('Admin/edittutor/{id}', 'AdminController@edittutor');
+    Route::post('Admin/edittutor/{id}', 'AdminController@updatetutor');
+
     Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
     Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
+
+     Route::get('Admin/deletestudent/{id}', 'AdminController@deletestudent');
+    Route::post('Admin/deletestudent/{id}', 'AdminController@removestudent');
+
+     Route::get('Admin/deletetutor/{id}', 'AdminController@deletetutor');
+    Route::post('Admin/deletetutor/{id}', 'AdminController@removetutor');
+
 
    // ********************************************tutor routes *****************************************************
    Route::get('/tutor', 'TutorController@index');//->middleware('sess');
@@ -82,17 +105,25 @@ Route::middleware(['sess'])->group(function()
    // ******************************************student Routes ******************************************************
 
 
-    Route::get('/student', 'StudentController@index');
-    Route::get('/student/tutor', 'StudentController@view_tutor');
-    Route::get('/student/contact', 'StudentController@contact');
-    Route::post('/student/contact', 'StudentController@message');
-    Route::get('/student/profile','StudentController@profile');
-    Route::get('/student/update/{id}', 'StudentController@updateView');
-   Route::post('/student/update/{id}', 'StudentController@update');
-   Route::get('/student/readBlog', 'StudentController@readBlog');
-    Route::get('/student/readBlog/pdf', 'StudentController@pdf');
-    Route::get('/student/writeBlog', 'StudentController@writeBlog');
-    Route::post('/student/writeBlog', 'StudentController@postBlog');
+   Route::get('/student', 'StudentController@index');
+   Route::get('/student/tutor', 'StudentController@view_tutor');
+   Route::get('/student/contact', 'StudentController@contact');
+   Route::post('/student/contact', 'StudentController@message');
+   Route::get('/student/profile','StudentController@profile');
+   Route::get('/student/update/{id}', 'StudentController@updateView');
+  Route::post('/student/update/{id}', 'StudentController@update');
+  Route::get('/student/readBlog', 'StudentController@readBlog');
+   Route::get('/student/ajax/pdf', 'StudentController@pdf');
+   Route::get('/student/writeBlog', 'StudentController@writeBlog');
+   Route::post('/student/writeBlog', 'StudentController@postBlog');
+   Route::get('/student/tutorials', 'StudentController@tutorials');
+   Route::get('/student/payment/{id}', 'StudentController@payment');
+   Route::post('/student/payment/{id}', 'StudentController@postpayment');
+   // Route::get('/student/ajax', 'StudentController@testblog');
+   Route::post('/loadmore/load_data', 'StudentController@load_data')->name('loadmore.load_data');
+   Route::get('student/live_search', 'StudentController@search');
+Route::get('/live_search/action', 'StudentController@action')->name('live_search.action');
+
 //    Route::get('/student/update/{id}', 'StudentController@update');
 
 

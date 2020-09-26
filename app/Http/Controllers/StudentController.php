@@ -9,7 +9,8 @@ use App\Tutor;
 use App\Blog;
 use App\payment;
 use Session;
-
+use DB;
+use PDF;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequests;
 
@@ -58,6 +59,8 @@ public function payment($id){
 
     $user = new Tutor();
     $data =$user->where('activestatus','active')
+                ->orderBy('id','ASC')
+                ->limit(3)
                 ->get();
                      //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
                      
@@ -134,49 +137,50 @@ public function payment($id){
 
   }
   //  for Read  Blog ------------------------------------
-public function readBlog(){
-  $user = new Blog();
-  $data= $user->get();
+// public function readBlog(){
+//   $user = new Blog();
+//   $data= $user->get();
 
-//  print_r($blog);
-  return view('student.readBlog')->with('user', $data);
-}
+// //  print_r($blog);
+//   return view('student.readBlog')->with('user', $data);
+// }
 //----------------------for pdf -----------------
-function pdf()
-   {
-    $pdf = \App::make('dompdf.wrapper');
-    $pdf->loadHTML($this->readBlog1());
-    return $pdf->stream();
+// function pdf()
+//    {
+//     $pdf = \App::make('dompdf.wrapper');
+//     $pdf->loadHTML($this->readBlog1());
+//     return $pdf->stream();
 
-   }
+//    }
 
-   function readBlog1()
-   {
-    $user = new Blog();
-    $data= $user->get();
+//    function readBlog1()
+//    {
+//      $blog= DB::table('blog')
+//       ->get();
 
-      $output='<h2>Read Blog</h2>';
+//       $output='<h2>Read Blog</h2>';
 
-      for($i=0; $i != count($user); $i++){
-      $output .= '
-      <div class="row">
-        <div class="leftcolumn">
-          <div class="card">
-            <h2 class="title">'.$user[$i]->article_name.'	</h2>
-            <p>	<br>'.$user[$i]->article.'</p>
-            <h4><br><b>Author:</b><i>'.	$user[$i]->author.'</i></h5>
-          </div>
+//       for($i=0; $i != count($blog); $i++){
+//       $output .= '
+//       <div class="row">
+//         <div class="leftcolumn">
+//           <div class="card">
+//             <h2 class="title">'.$blog[$i]->article_name.'	</h2>
+//             <p>	<br>'.$blog[$i]->article.'</p>
+//             <h4><br><b>Author:</b><i>'.	$blog[$i]->author.'</i></h5>
+//           </div>
           
 
-        </div>
-        </div>
+//         </div>
+//         </div>
 
-       ';
-         }
-       $output .= '</table>';
-       return $output;
+//        ';
+//          }
+//        $output .= '</table>';
+//        return $output;
 
-  }
+
+//   }
   //write_blog.............
   public function writeBlog(){
 
@@ -219,9 +223,177 @@ function pdf()
         $client = new \GuzzleHttp\Client();
         $request = $client->get('http://localhost:3000/tutorials');
         $response = $request->getBody()->getContents();
-        echo '<pre>';
+        //echo '<pre>';
         print_r($response);
         exit;
     }
+    //===========================================================READ__BLOG==========================================================
+    function readBlog()
+    {
+     return view('student/readBlog');
+    }
 
+    public function load_data(Request $request)
+    {
+     if($request->ajax())
+     {
+      if($request->id > 0)
+      {
+       $data = DB::table('blog')
+          ->where('id', '<', $request->id)
+          ->orderBy('id', 'DESC')
+          ->limit(2)
+          ->get();
+      }
+      else
+      {
+       $data = DB::table('blog')
+          ->orderBy('id', 'DESC')
+          ->limit(2)
+          ->get();
+      }
+      $output = '';
+      $last_id = '';
+      
+      if(!$data->isEmpty())
+      {
+       foreach($data as $row)
+       {
+        $output .= '
+        <div class="row">
+         <div class="col-md-12">
+          <h3 class="text-info"><b>'.$row->article_name.'</b></h3>
+          <p>'.$row->article.'</p>
+          <br />
+          
+          <div class="col-md-6" align="right">
+           <p><b><i>By - '.$row->author.'</i></b></p>
+          </div>
+          <br />
+          <hr />
+         </div>         
+        </div>
+        ';
+        $last_id = $row->id;
+       }
+       $output .= '
+       <div id="load_more">
+        <button type="button" name="load_more_button" class="btn btn-success form-control" data-id="'.$last_id.'" id="load_more_button">Load More</button>
+       </div>
+       ';
+      }
+      else
+      {
+       $output .= '
+       <div id="load_more">
+        <button type="button" name="load_more_button" class="btn btn-info form-control">No Data Found</button>
+       </div>
+       ';
+      }
+      echo $output;
+     }
+     
+     
+    }
+    //======================BLOG_PDF_DOWNLOAD==================================================================
+function pdf()
+   {
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($this->readBlog1());
+    return $pdf->stream();
+
+   }
+
+   function readBlog1()
+   {
+     $blog= DB::table('blog')
+     ->orderBy('id', 'DESC')
+      ->get();
+
+      $output='<h2>Read Blog</h2>';
+
+      for($i=0; $i != count($blog); $i++){
+      $output .= '
+      <div class="row">
+        <div class="leftcolumn">
+          <div class="card">
+            <h2 class="title">'.$blog[$i]->article_name.'	</h2>
+            <p>	<br>'.$blog[$i]->article.'</p>
+            <h4><br><b>Author:</b><i>'.	$blog[$i]->author.'</i></h5>
+          </div>
+          
+
+        </div>
+        </div>
+
+       ';
+         }
+       $output .= '</table>';
+       return $output;
+
+
+  }
+  //====================================search++++++++++++++++
+  function search()
+  {
+   return view('/student/live_search');
+  }
+
+  function action(Request $request)
+  {
+   if($request->ajax())
+   {
+    $output = '';
+    $query = $request->get('query');
+    if($query != '')
+    {
+     $data = DB::table('tutor')
+       ->where('name', 'like', '%'.$query.'%')
+       ->orWhere('subject', 'like', '%'.$query.'%')
+       
+       ->orderBy('CustomerID', 'desc')
+       ->get();
+       
+    }
+    else
+    {
+     $data = DB::table('tutor')
+       ->orderBy('CustomerID', 'desc')
+       ->get();
+    }
+    $total_row = $data->count();
+    if($total_row > 0)
+    {
+     foreach($data as $row)
+     {
+      $output .= '
+      <tr>
+       <td>'.$row->Name.'</td>
+       <td>'.$row->subject.'</td>
+       <td>'.$row->Salary.'</td>
+      
+      </tr>
+      ';
+     }
+    }
+    else
+    {
+     $output = '
+     <tr>
+      <td align="center" colspan="5">No Data Found</td>
+     </tr>
+     ';
+    }
+    $data = array(
+     'table_data'  => $output,
+     'total_data'  => $total_row
+    );
+
+    echo json_encode($data);
+   }
+  }
 }
+
+
+
+

@@ -1,11 +1,3 @@
-<?php 
-
-$month = date('m');
-$day = date('d');
-$year = date('Y');
-
-$today = $year . '-' . $month . '-' . $day;
-?>
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +14,7 @@ $today = $year . '-' . $month . '-' . $day;
 
     <style >
     .body {
-      background-color:#25274d;
+      background-color:#f1c30f;
       /* border: 1px solid red; */
       padding:5%;
       }
@@ -46,51 +38,46 @@ $today = $year . '-' . $month . '-' . $day;
 
     <form class="needs-validation"  id="from" method="post">
     {{ csrf_field() }}
-      <a href="/student">Back</a>|
-      <a href="/logout">Logout</a>
+      <a href="/viewstudent">Back</a>|
+      <a href="/logout">Logout</a><br>
 
-        <h1 class="m-heading">Payment
-        </h1>
-
-        @if (Session::has('username','id'))
-        <div class="form-row">
-        <div class="form-group col-md-4">
-          <label>Tutor Name</label>
-          <input type="text" class="form-control" id="tutor_name" name="tutor_name"  value="{{$user->name}}" readonly>
-          </div>
+        <h2 class="m-heading">Update Tutor Information From Admin Account
          
+        </h2>
+
+
+        <div class="form-row">
+
+        
+        <div class="form-group col-md-6">
+          <label > Tutor ID</label>
+          <input type="id" class="form-control" id="student_id" name="student_id"  value="{{$user->id}}" readonly="" >
+        </div>
        
-        <div class="form-group col-md-6">
-        <label>Student Name</label>
-          <input type="text" class="form-control" id="student_name" name="student_name"  value="{{{ Session::get('username') }}}"readonly>
-          
-        </div>
-        <div class="form-group col-md-6">
-          <label >Pay Amount</label>
-          <input type="text" class="form-control" id="amount" name="amount"  value="{{$user->salary}}" readonly>
-        </div>
-        <div class="form-group col-md-4">
-          <label>Date</label>
-          <input type="date" value="<?php echo $today; ?>" class="form-control" id="date" name="date">
-          </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-4">
-        
-          <input type="hidden" class="form-control" id="tutor_id" name="tutor_id"  value="{{$user->id}}" readonly>
+          <label>Name</label>
+          <input type="text" class="form-control" id="name" name="name"  value="{{$user->name}}">
+          {!! $errors->first('name', '<div class="error-block" style ="color:red;">:message</div>') !!}
         </div>
-        <div class="form-group col-md-6">
-          
-          <input type="hidden" class="form-control" id="student_id" name="student_id"  value="{{{ Session::get('id') }}}"readonly>
+          <div class="form-group col-md-4">
+            <label>Subject</label>
+            <input type="text" class="form-control" id="class" name="subject"  value="{{$user->subject}}">
+            {!! $errors->first('subject', '<div class="error-block" style ="color:red;">:message</div>') !!}
+          </div>
+        <div class="form-group col-md-4">
+          <label>Active Status </label>
+            <input type="text" class="form-control" id="activestatus" name="activestatus"  value="{{$user->activestatus}}" >
+              {!! $errors->first('activestatus', '<div class="error-block" style ="color:red;">:message</div>') !!}
         </div>
-         
-        
       </div>
-      @endif
 
-      <td><input type="submit" name="submit" value="Confirm Payment"></td>
-     
+
+      <!-- <button type="submit" name="submit"  class="btn btn-primary">UPDADE</button> -->
+      <td><input type="submit" name="submit" value="update"></td>
+   
 
     </form>
 

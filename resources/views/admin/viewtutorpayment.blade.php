@@ -6,12 +6,6 @@
 * {
   box-sizing: border-box;
 }
-.btn{
-  padding : 5px;
-  background-color:   #1ad1ff;
-  border-radius :5px;
-}
-
 
 #myInput {
   background-image: url('/css/searchicon.png');
@@ -41,7 +35,7 @@
 }
 
 #myTable tr.header, #myTable tr:hover {
-  background-color:  #ccffeb;
+  background-color: #f5f5f5;
 }
 </style>
 <script>
@@ -52,7 +46,7 @@ function myFunction() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
+    td = tr[i].getElementsByTagName("td")[0];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toLowerCase().indexOf(filter) > -1) {
@@ -65,30 +59,36 @@ function myFunction() {
 }
 </script>
 </head>
-<body style="background-color :  #4dffb8">
+<body style="background-color : #f1c30f">
+   <a href="/payment">Back</a>|
+      <a href="/logout">Logout</a><br> |<br>
+         <a href="/tutorpdf">Download pdf</a><br>
 
-<h1 style="text-align: center;">Active Tutors </h1>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Serch By Subject" title="Type in a name">
+<h2 style="text-align: center;">All Tutors payment Information </h2>
+<form>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter ID here.." title="Type in a name">
 
 <table id="myTable">
   <tr class="header">
-    <th style="width:10%;">ID</th>
-    <th style="width:20%;">UserName</th>
-<th style="width:20%;">Subject</th>
-<th style="width:20%;">Subscription Fee</th>
-    <th style="width:20%;">Subscription</th>
-    
-  </tr>
- @for($i=0; $i != count($user); $i++)
-  <tr>
-    <td>{{$user[$i]->id}}</td>
-    <td>{{$user[$i]->name}}</td>
-    <td>{{$user[$i]->subject}}</td>
-    <td>{{$user[$i]->salary}}</td>
-    <td><a href="/student/payment/{{$user[$i]->id}}"><button type="button"  class="btn">Subscribe</button></a></td>
-  
+    <th style="width:10%;">Tuor ID</th>
+    <th style="width:20%;">Tutor Name</th>
+    <th style="width:20%;">Subject</th>
+    <th style="width:20%;">Avtive Status</th>
+    <th style="width:10%;">Payer ID</th>
+    <th style="width:20%;">Ammount</th>
    
+  </tr>
+ @for($i=0; $i != count($users); $i++)
+  <tr>
+    <td>{{$users[$i]->reciverttid}}</td>
+    <td>{{$users[$i]->name}}</td>
+    <td>{{$users[$i]->subject}}</td>
+    <td>{{$users[$i]->activestatus}}</td>
+    <td>{{$users[$i]->payerssid}}</td>
+    
+    <td>{{$users[$i]->amount}}</td>
+    
+    
   </tr>
 @endfor
 </table>
@@ -97,6 +97,6 @@ function myFunction() {
 
 
 
-
+</form>
 </body>
 </html>

@@ -7,6 +7,7 @@ use App\User;
 use App\contact;
 use App\blog;
 use app\tutorials;
+use app\payment;
 use App\Http\Requests\UserRequests;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -258,8 +259,40 @@ public function uploadTutotial( Request $request){
    }
 
  }
+ //-------------------------blance-----
+ public function balance($id){
+   // $payment=new payment();
+   // $data = $payment->where('tutor_id', $id)
+   $data= DB::table('payments')->where('tutor_id', $id)
+   ->get();
+  // print_r($data);
+
+    //
+     return view('tutor.balance')->with('balance', $data);
+
+ }
 
 
+
+
+//=--------------API-------------allTutorial--
+public function allTutorial(){
+  $client = new \GuzzleHttp\Client();
+  $request = $client->get('http://localhost:3000/tutorials');
+  $response = $request->getBody()->getContents();
+  echo '<pre>';
+  print_r($response);
+  exit;
+}
+
+public function packageList(){
+  $client = new \GuzzleHttp\Client();
+  $request = $client->get('http://localhost:3000/packages');
+  $response = $request->getBody()->getContents();
+  echo '<pre>';
+  print_r($response);
+  exit;
+}
 //----------------------for pdf -----------------
 function pdf()
    {
@@ -299,6 +332,23 @@ function pdf()
 
 
 
+  }
+
+  function balancepdf()
+     {
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($this->balance($id));
+      return $pdf->stream();
+
+     }
+  function balancePdfView($id){
+    $data= DB::table('payments')->where('tutor_id', $id)
+    ->get();
+    $output='<h2>My balance Report</h2>';
+
+
+    $output .= '</table>';
+    return $output;
   }
 
 

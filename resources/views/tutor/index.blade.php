@@ -57,6 +57,7 @@
              <ul>
 <!-- // Tutor home page -->
                <li><a href="/tutor/profile/{{{ Session::get('id') }}}"><span></span>My profile </a></li>
+               <li><a href="/tutor/balance/{{{ Session::get('id') }}}"><span></span>Blance</a></li>
                <li><a href="/tutor/update/{{{ Session::get('id') }}}"><span></span>Update profile </a></li>
                <li><a href="/tutor/student"><span></span>My students</a></li>
 
@@ -68,6 +69,7 @@
 
                <li><a href="/tutor/uploadTutotial"><span></span>Upload Tutotial </a></li>
                 <li><a href="guzz"><span></span>All Tutotial </a></li>
+                  <li><a href="guzz/package"><span></span>My package List </a></li>
 
                <li><a href="/tutor/readBlog"><span></span>Read Blog</a></li>
                <li><a href="{{ url('tutor/readBlog/pdf') }}"><span></span>Pint Blog Post</a></li>

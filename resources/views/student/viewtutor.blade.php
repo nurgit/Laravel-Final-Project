@@ -75,9 +75,9 @@ function myFunction() {
   <tr class="header">
     <th style="width:10%;">ID</th>
     <th style="width:20%;">UserName</th>
-  
-    <th style="width:30%;">Subject</th>
-    <th style="width:30%;">Subscription</th>
+<th style="width:20%;">Subject</th>
+<th style="width:20%;">Subscription Fee</th>
+    <th style="width:20%;">Subscription</th>
     
   </tr>
  @for($i=0; $i != count($user); $i++)
@@ -85,6 +85,7 @@ function myFunction() {
     <td>{{$user[$i]->id}}</td>
     <td>{{$user[$i]->name}}</td>
     <td>{{$user[$i]->subject}}</td>
+    <td>{{$user[$i]->salary}}</td>
     <td><a href="/student/payment/{{$user[$i]->id}}"><button type="button"  class="btn">Subscribe</button></a></td>
   
    

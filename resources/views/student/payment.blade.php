@@ -54,11 +54,12 @@ $today = $year . '-' . $month . '-' . $day;
 
         @if (Session::has('username','id'))
         <div class="form-row">
-      
-        <div class="form-group col-md-6">
-          <label >Student Id</label>
-          <input type="id" class="form-control" id="student_id" name="student_id"  value="{{{ Session::get('id') }}}"readonly>
-        </div>
+        <div class="form-group col-md-4">
+          <label>Tutor Name</label>
+          <input type="text" class="form-control" id="tutor_name" name="tutor_name"  value="{{$user->name}}" readonly>
+          </div>
+         
+       
         <div class="form-group col-md-6">
         <label>Student Name</label>
           <input type="text" class="form-control" id="student_name" name="student_name"  value="{{{ Session::get('username') }}}"readonly>
@@ -76,13 +77,13 @@ $today = $year . '-' . $month . '-' . $day;
 
       <div class="form-row">
         <div class="form-group col-md-4">
-        <label >Tutor ID</label>
-          <input type="id" class="form-control" id="tutor_id" name="tutor_id"  value="{{$user->id}}" readonly>
+        
+          <input type="hidden" class="form-control" id="tutor_id" name="tutor_id"  value="{{$user->id}}" readonly>
         </div>
-          <div class="form-group col-md-4">
-          <label>Tutor Name</label>
-          <input type="text" class="form-control" id="tutor_name" name="tutor_name"  value="{{$user->name}}" readonly>
-          </div>
+        <div class="form-group col-md-6">
+          
+          <input type="hidden" class="form-control" id="student_id" name="student_id"  value="{{{ Session::get('id') }}}"readonly>
+        </div>
          
         
       </div>

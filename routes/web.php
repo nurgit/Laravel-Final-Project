@@ -87,12 +87,17 @@ Route::middleware(['sess'])->group(function()
     Route::get('/student/update/{id}', 'StudentController@updateView');
    Route::post('/student/update/{id}', 'StudentController@update');
    Route::get('/student/readBlog', 'StudentController@readBlog');
-    Route::get('/student/readBlog/pdf', 'StudentController@pdf');
+    Route::get('/student/ajax/pdf', 'StudentController@pdf');
     Route::get('/student/writeBlog', 'StudentController@writeBlog');
     Route::post('/student/writeBlog', 'StudentController@postBlog');
     Route::get('/student/tutorials', 'StudentController@tutorials');
     Route::get('/student/payment/{id}', 'StudentController@payment');
     Route::post('/student/payment/{id}', 'StudentController@postpayment');
+    // Route::get('/student/ajax', 'StudentController@testblog');
+    Route::post('/loadmore/load_data', 'StudentController@load_data')->name('loadmore.load_data');
+    Route::get('student/live_search', 'StudentController@search');
+Route::get('/live_search/action', 'StudentController@action')->name('live_search.action');
+    
 //    Route::get('/student/update/{id}', 'StudentController@update');
 
 

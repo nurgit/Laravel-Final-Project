@@ -36,7 +36,7 @@
                  <li><a href="/adminureg"><span></span>Create User</a></li>
                 
                  <li><a href="/Admin/adminstudent"><span></span>Student Section</a></li>
-                 <li><a href="/user/payment"><span></span>Payment information</a></li>
+                 <li><a href="/payment"><span></span>Payment information</a></li>
                  <li><a href="/logout"><span></span>Logout</a></li>
              </ul>
 

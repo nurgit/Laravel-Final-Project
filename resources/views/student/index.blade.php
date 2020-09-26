@@ -30,13 +30,14 @@
                  <li><a href="/student/profile"><span>02.</span>View Profile</a></li>
                  <li><a href="/student/update/{{{ Session::get('id') }}}"><span>03.</span>Update Profile</a></li>
                  <li><a href="/student/tutor"><span>04.</span>Tutors</a></li>
-                 <li><a href="student/live_search"><span>05.</span>Buy Subscription</a></li>
-                 <li><a href="/student/tutorials"><span>06.</span>Tutorials</a></li>
+                 <li><a href="student/live_search"><span>05.</span>Find Courses</a></li>
+                 <li><a href="/student/packages"><span>06.</span>Subscribed Courses</a></li>
                  <li><a href="/student/writeBlog"><span>07.</span>Write Blog</a></li>
                  <li><a href="/student/readBlog"><span>08.</span>Read Blog</a></li>
                  <li><a href="/student/contact"><span>09.</span>Contact Us</a></li>
                  <li><a href="/student/upload"><span>10.</span>Upload Files</a></li>
-                 <li><a href="/logout"><span>11.</span>Logout</a></li>
+                 <li><a href="/student/tutorials"><span>11.</span>Tutorials</a></li>
+                 <li><a href="/logout"><span>12.</span>Logout</a></li>
              </ul>
 
 

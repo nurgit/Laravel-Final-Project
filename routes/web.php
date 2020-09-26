@@ -104,10 +104,25 @@ Route::middleware(['sess'])->group(function()
 
 
 
+   
+
+
+    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    // ******************************************student Routes ******************************************************
-
-
-    Route::get('/student', 'StudentController@index');
+   
+   Route::get('/student', 'StudentController@index');
     Route::get('/student/tutor', 'StudentController@view_tutor');
     Route::get('/student/contact', 'StudentController@contact');
     Route::post('/student/contact', 'StudentController@message');
@@ -124,12 +139,13 @@ Route::middleware(['sess'])->group(function()
     Route::post('/student/upload', 'StudentController@uploadFile')->name('uploadfile');
     Route::get('/student/payment/{id}', 'StudentController@payment');
     Route::post('/student/payment/{id}', 'StudentController@postpayment');
-    // Route::get('/student/ajax', 'StudentController@testblog');
+   
     Route::post('/loadmore/load_data', 'StudentController@load_data')->name('loadmore.load_data');
     Route::get('student/live_search', 'StudentController@search');
 Route::get('/live_search/action', 'StudentController@action')->name('live_search.action');
-
-//    Route::get('/student/update/{id}', 'StudentController@update');
+Route::get('/student/readBlog', 'StudentController@readBlog');
+Route::get('/student/readBlog', 'StudentController@readBlog');
+Route::get('/student/packages', 'StudentController@packages');
 
 
 

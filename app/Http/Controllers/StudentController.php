@@ -95,13 +95,18 @@ public function payment($id){
 
 
   }
+  function packages(Request $request)
+  {
+    $user= new payment();
+    $data= $user->where('student_id',session::get('id'))
+                ->get();
+                return view('student.packages')->with('user', $data);
+  }
   //view tutors----------
   function view_tutor(Request $request){
 
     $user = new Tutor();
     $data =$user->where('activestatus','active')
-                ->orderBy('id','ASC')
-                
                 ->get();
                      //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
                      

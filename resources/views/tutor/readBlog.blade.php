@@ -76,9 +76,11 @@ body {
 
         <div class="backLogout">
           <a href="/tutor">Back</a>|
-          <a href="/logout">Logout</a>
+          <a href="/logout">Logout</a>|
 
           <a href="{{ url('tutor/readBlog/pdf') }}" class="btn btn-danger">Convert into PDF</a>
+
+
 
         </div>
 

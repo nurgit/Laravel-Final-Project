@@ -42,13 +42,13 @@
       <a href="/logout">Logout</a><br>
 
         <h2 class="m-heading">Update User Information From Admin Account
-         
+
         </h2>
 
 
         <div class="form-row">
 
-        
+
         <div class="form-group col-md-6">
           <label >ID</label>
           <input type="id" class="form-control" id="id" name="id"  value="{{$user->id}}" >
@@ -69,7 +69,7 @@
           <div class="form-group col-md-4">
             <label>Email</label>
             <input type="text" class="form-control" id="Email" name="email"  value="{{$user->email}}">
-            {!! $errors->first('email', '<div class="error-block" style ="color:red;">:message</div>') !!}
+            {!! $errors->first('email', '<div class="error-block" style ="color:red;">:contact</div>') !!}
           </div>
         <div class="form-group col-md-4">
           <label>User Type</label>
@@ -80,7 +80,7 @@
 
       <!-- <button type="submit" name="submit"  class="btn btn-primary">UPDADE</button> -->
       <td><input type="submit" name="submit" value="update"></td>
-   
+
 
     </form>
 

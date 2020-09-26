@@ -27,6 +27,8 @@ Route::middleware(['sess'])->group(function()
    Route::get('/admin', 'AdminController@index');
 
     Route::get('/dotnet', 'AdminController@dotnet');
+    Route::get('/dotnetmember', 'AdminController@dotnetmember');
+
     Route::get('/guzz', 'AdminController@getRequest');
     Route::get('/node','AdminController@node');
     Route::get('/adminureg', 'AdminController@adminureg');
@@ -62,7 +64,7 @@ Route::middleware(['sess'])->group(function()
 
     Route::get('Admin/deleteuser/{id}', 'AdminController@deleteuser');
     Route::post('Admin/deleteuser/{id}', 'AdminController@removeuser');
-    
+
      Route::get('Admin/deletestudent/{id}', 'AdminController@deletestudent');
     Route::post('Admin/deletestudent/{id}', 'AdminController@removestudent');
 
@@ -80,8 +82,25 @@ Route::middleware(['sess'])->group(function()
    Route::get('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutorView');
    Route::post('/tutor/requestPaidTutor/{id}', 'TutorController@requestPaidTutor');
     Route::get('/tutor/student', 'TutorController@studentView');
+
+    Route::get('/tutor/writeBlog', 'TutorController@writeBlogView');
+    Route::post('/tutor/writeBlog', 'TutorController@writeBlog');
+
+    Route::get('/tutor/uploadTutotial', 'TutorController@uploadTutotialView');
+    Route::post('/tutor/uploadTutotial', 'TutorController@uploadTutotial');
+    Route::get('/guzz', 'TutorController@allTutorial');//using Api
+    Route::get('/guzz/package', 'TutorController@packageList');//using Api
+
+    Route::get('/tutor/balance/{id}', 'TutorController@balance');
+
     Route::get('/tutor/readBlog', 'TutorController@readBlog');
     Route::get('/tutor/readBlog/pdf', 'TutorController@pdf');
+
+    Route::get('/tutor/balance/pdf', 'TutorController@balancepdf');
+
+
+
+
 
 
 
@@ -109,7 +128,7 @@ Route::middleware(['sess'])->group(function()
     Route::post('/loadmore/load_data', 'StudentController@load_data')->name('loadmore.load_data');
     Route::get('student/live_search', 'StudentController@search');
 Route::get('/live_search/action', 'StudentController@action')->name('live_search.action');
-    
+
 //    Route::get('/student/update/{id}', 'StudentController@update');
 
 

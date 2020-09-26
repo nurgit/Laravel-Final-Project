@@ -26,6 +26,11 @@ class AdminController extends Controller
 
     	return view('admin.dotnet');
     }
+
+     function dotnetmember(){
+
+      return view('admin.dotnetmember');
+    }
       function node(){
 
     	return view('admin.node');

@@ -27,6 +27,8 @@ Route::middleware(['sess'])->group(function()
    Route::get('/admin', 'AdminController@index');
 
     Route::get('/dotnet', 'AdminController@dotnet');
+    Route::get('/dotnetmember', 'AdminController@dotnetmember');
+
     Route::get('/guzz', 'AdminController@getRequest');
     Route::get('/node','AdminController@node');
     Route::get('/adminureg', 'AdminController@adminureg');

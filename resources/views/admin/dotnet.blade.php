@@ -12,17 +12,16 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/dotnet.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/c.css') }}">
 
 </head>
 
 <body>
     <ul class="topnav">
-        <li><a class="active" href="user.html">Flat Owners</a></li>
+        <li><a class="active" href="/dotnet">Flat Owners</a></li>
         <li><a href="/admin">Home</a></li>
-        <li><a href="servant.html">Servant</a></li>
-        <li><a href="guest.html">Guest Records</a></li>
-        <li><a href="servicecharge.html">Service Charge</a></li>
-        <li><a href="notice.html">Notice Board </a></li>
+        <li><a href="/dotnetmember">Member</a></li>
+        
     </ul>
     <button id="load">Load Data</button>
     <br/>

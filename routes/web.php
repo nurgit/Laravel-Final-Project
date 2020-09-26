@@ -33,6 +33,15 @@ Route::middleware(['sess'])->group(function()
     Route::post('/adminureg','AdminController@storeuser');
     Route::post('/adminureg','AdminController@storeuser');
     Route::get('/admintutorres','AdminController@tutorres');
+    Route::get('/payment','AdminController@payment');
+    Route::get('/addpayment','AdminController@addpayment');
+     Route::post('/addpayment','AdminController@storepayment');
+     Route::get('/view_tutorpayment','AdminController@view_tutorpayment');
+     Route::get('/view_studentpayment','AdminController@view_studentpayment');
+     Route::get('/tutorpdf','AdminController@tutorpdf');
+     Route::get('/studentpdf','AdminController@studentpdf');
+     Route::get('/monthlyincome','AdminController@monthlyincome');
+
 
 
 

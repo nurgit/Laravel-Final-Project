@@ -21,7 +21,6 @@
   <body style="background-color:#25274d;">
 
     <div  class="container" style="margin-top: 70px;">
-    <a href="{{ url('student/profile/pdf') }}" class="btn btn-danger">Convert into PDF</a>
              <div class="jumbotron">
                <a href="/student">Back</a>|
                <a href="/logout">Logout</a>
@@ -33,24 +32,18 @@
                    <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                        <div class="container" style="border-bottom:1px solid black">
                          <h2>
-
-
-                         @if (Session::has('username'))
-                         {{{ Session::get('username') }}}
-                         @endif
-
+                    <form method="POST" action="{{route('uploadfile')}}" enctype="multipart/form-data">
+                       @csrf
+                       <label for="file">Upload Files Here</label><br><br>
+                       
+                         <input type="file" name="file"/><br>
+                         <button type="submit" name="submit">Upload</button>
+                         </form>
                        </h2>
                        </div>
                        </br>
 
-                       <ul class="container details">
-                         @foreach ($user as $user)
-                          <li><p><span class="" style="width:50px;"></span><b> User Name: </b> {{$user->username}}</p></li>
-                         <li><p><b>Id      :</b> <span class="" style="width:50px;"></span>{{$user->id}}</p></li>
-                         <li><p><span class="" style="width:50px;"><b>Email  :</b></span>{{$user->email}}</p></li>
-                         <li><p><span class="" style="width:50px;"><b>User Type:</b></span>{{$user->type}}</p></li>
-                         @endforeach
-                       </ul>
+                      
 
                    </div>
                </div>

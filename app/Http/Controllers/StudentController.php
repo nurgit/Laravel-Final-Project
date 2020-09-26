@@ -54,13 +54,54 @@ public function payment($id){
 
     return view('student.profile')->with('user',$data);
   }
+  //----------------pdf for profile data----------------------
+  function profilePdf()
+   {
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($this->readProfile());
+    return $pdf->stream();
+
+   }
+
+   function readProfile()
+   {
+    $user = new User();
+    $data = $user->where('username',session::get('username'))
+                       ->get();
+
+      $output='<h2>User Data</h2>';
+
+      for($i=0; $i != count($data); $i++){
+      $output .= '
+      <div class="row">
+        <div class="leftcolumn">
+          <div class="card">
+            <h2 class="title">'.$data[$i]->id.'	</h2>
+            <p>	<br>'.$data[$i]->username.'</p>
+            <p>	<br>'.$data[$i]->password.'</p>
+            <p>	<br>'.$data[$i]->email.'</p>
+            <p>	<br>'.$data[$i]->type.'</p>
+     
+          </div>
+          
+
+        </div>
+        </div>
+
+       ';
+         }
+       $output .= '</table>';
+       return $output;
+
+
+  }
   //view tutors----------
   function view_tutor(Request $request){
 
     $user = new Tutor();
     $data =$user->where('activestatus','active')
                 ->orderBy('id','ASC')
-                ->limit(3)
+                
                 ->get();
                      //->join('accounts', 'user_table.userId', '=', 'accounts.accId')
                      
@@ -145,42 +186,7 @@ public function payment($id){
 //   return view('student.readBlog')->with('user', $data);
 // }
 //----------------------for pdf -----------------
-// function pdf()
-//    {
-//     $pdf = \App::make('dompdf.wrapper');
-//     $pdf->loadHTML($this->readBlog1());
-//     return $pdf->stream();
-
-//    }
-
-//    function readBlog1()
-//    {
-//      $blog= DB::table('blog')
-//       ->get();
-
-//       $output='<h2>Read Blog</h2>';
-
-//       for($i=0; $i != count($blog); $i++){
-//       $output .= '
-//       <div class="row">
-//         <div class="leftcolumn">
-//           <div class="card">
-//             <h2 class="title">'.$blog[$i]->article_name.'	</h2>
-//             <p>	<br>'.$blog[$i]->article.'</p>
-//             <h4><br><b>Author:</b><i>'.	$blog[$i]->author.'</i></h5>
-//           </div>
-          
-
-//         </div>
-//         </div>
-
-//        ';
-//          }
-//        $output .= '</table>';
-//        return $output;
-
-
-//   }
+// 
   //write_blog.............
   public function writeBlog(){
 
@@ -345,13 +351,13 @@ function pdf()
    {
     $output = '';
     $query = $request->get('query');
-    if($query != '')
+    if($query != null)
     {
      $data = DB::table('tutor')
        ->where('name', 'like', '%'.$query.'%')
        ->orWhere('subject', 'like', '%'.$query.'%')
        
-       ->orderBy('CustomerID', 'desc')
+       ->orderBy('id', 'desc')
        ->get();
        
     }
@@ -368,9 +374,9 @@ function pdf()
      {
       $output .= '
       <tr>
-       <td>'.$row->Name.'</td>
+       <td>'.$row->name.'</td>
        <td>'.$row->subject.'</td>
-       <td>'.$row->Salary.'</td>
+       <td>'.$row->salary.'</td>
       
       </tr>
       ';
@@ -391,6 +397,16 @@ function pdf()
 
     echo json_encode($data);
    }
+  }
+  //=================Upload files=================
+  public function upload(){
+    return view ('/student/upload');
+  }
+  public function uploadFile(Request $request)
+  {
+    $request->file->store('public');
+    return redirect('student/upload/')->with('FILE HAS BEEN UPLOADED SUCESSFULLy'); 
+    
   }
 }
 

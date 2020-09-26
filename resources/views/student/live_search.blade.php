@@ -21,11 +21,10 @@
       <table class="table table-striped table-bordered">
        <thead>
         <tr>
-         <th>Customer Name</th>
-         <th>Address</th>
-         <th>City</th>
-         <th>Postal Code</th>
-         <th>Country</th>
+         <th>Name</th>
+         <th>Subject</th>
+         <th>Salary</th>
+         
         </tr>
        </thead>
        <tbody>
@@ -40,6 +39,7 @@
 </html>
 
 <script>
+
 $(document).ready(function(){
 
  fetch_customer_data();

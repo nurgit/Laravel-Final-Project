@@ -35,7 +35,8 @@
                  <li><a href="/student/writeBlog"><span>07.</span>Write Blog</a></li>
                  <li><a href="/student/readBlog"><span>08.</span>Read Blog</a></li>
                  <li><a href="/student/contact"><span>09.</span>Contact Us</a></li>
-                 <li><a href="/logout"><span>09.</span>Logout</a></li>
+                 <li><a href="/student/upload"><span>10.</span>Upload Files</a></li>
+                 <li><a href="/logout"><span>11.</span>Logout</a></li>
              </ul>
 
 

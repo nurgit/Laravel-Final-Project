@@ -97,9 +97,12 @@ Route::middleware(['sess'])->group(function()
    Route::post('/student/update/{id}', 'StudentController@update');
    Route::get('/student/readBlog', 'StudentController@readBlog');
     Route::get('/student/ajax/pdf', 'StudentController@pdf');
+    Route::get('/student/profile/pdf', 'StudentController@profilePdf');
     Route::get('/student/writeBlog', 'StudentController@writeBlog');
     Route::post('/student/writeBlog', 'StudentController@postBlog');
     Route::get('/student/tutorials', 'StudentController@tutorials');
+    Route::get('/student/upload', 'StudentController@upload');
+    Route::post('/student/upload', 'StudentController@uploadFile')->name('uploadfile');
     Route::get('/student/payment/{id}', 'StudentController@payment');
     Route::post('/student/payment/{id}', 'StudentController@postpayment');
     // Route::get('/student/ajax', 'StudentController@testblog');
